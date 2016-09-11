@@ -1,12 +1,16 @@
 package com.jweb.action;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.jweb.model.PersonalIntroduction;
 import com.jweb.service.PersonalIntroductionService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -18,8 +22,11 @@ public class PersonalIntroductionAction extends ActionSupport{
 	private PersonalIntroduction personalIntroduction;
 	@Override
 	public String execute() throws Exception {
+		//System.out.println(personalIntroductionService);
 		PersonalIntroduction personalIntroduction=personalIntroductionService.getPersonalIntroductionById(1);
-		
+		System.out.println(personalIntroduction.getContent());
+		Map request =(Map)ActionContext.getContext().get("request");
+		request.put("userinfo", personalIntroduction);
 		return "show_personalIntroduction";
 	}
 	public String edit(){
@@ -46,5 +53,5 @@ public class PersonalIntroductionAction extends ActionSupport{
 	public void setPersonalIntroduction(PersonalIntroduction personalIntroduction) {
 		this.personalIntroduction = personalIntroduction;
 	}
-	
+		
 }

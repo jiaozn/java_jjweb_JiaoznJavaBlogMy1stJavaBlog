@@ -31,7 +31,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="com.jweb.model.*"/>
+        <mapping class="com.jweb.model.PersonalIntroduction"/>
 
     </session-factory>
 

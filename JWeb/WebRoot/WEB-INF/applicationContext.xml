@@ -2,20 +2,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd" default-autowire="byType">
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="personalIntroductionAction" class="com.jweb.action.PersonalIntroductionAction">
-		<!-- collaborators and configuration for this bean go here -->
+		<property name="personalIntroductionService" ref="personalIntroductionService"></property>
+
+	</bean>
+	<bean id="personalIntroductionService" class="com.jweb.service.PersonalIntroductionServiceImpl">
+				<property name="personalIntroductionDao" ref="personalIntroductionDao"></property>
+	</bean>
+	<bean id="personalIntroductionDao" class="com.jweb.dao.PersonalIntroductionDaoImpl">
+				<property name="personalIntroduction" ref="personalIntroduction"></property>
 	</bean>
 	<bean id="personalIntroduction" class="com.jweb.model.PersonalIntroduction">
-
-		<!-- collaborators and configuration for this bean go here -->
 	</bean>
+	
+	
+	<!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
 
-
-<!-- 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> 
-    </bean>
- -->
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> 
+		</bean> -->
 
 	<!-- more bean definitions go here -->
 
