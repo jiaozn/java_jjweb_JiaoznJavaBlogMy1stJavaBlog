@@ -5,7 +5,7 @@
 
 <struts>
 
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
@@ -16,14 +16,14 @@
             <result name="error">service_error.jsp</result>
         </global-results>
 
-        <global-exception-mappings>
+      <!--      <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
-
+		-->
         <action name="index">
             <result>/service_main.jsp</result>
-        </action>
-        <action name="service_personalIntroduction" class="personalIntroductionAction">
+        </action>											
+        <action name="service_personalIntroduction" class="com.jweb.action.PersonalIntroductionAction">
             <result name="show_personalIntroduction">/service_personalIntroduction.jsp</result>
             <result name="personalIntroduction_edit">/service_personalIntroduction_edit.jsp</result>
         </action>

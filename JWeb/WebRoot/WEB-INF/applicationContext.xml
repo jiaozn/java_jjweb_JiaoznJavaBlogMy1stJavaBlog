@@ -4,16 +4,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-	<bean id="personalIntroduction" class="com.jweb.action.PersonalIntroduction">
+	<bean id="personalIntroductionAction" class="com.jweb.action.PersonalIntroductionAction">
+		<!-- collaborators and configuration for this bean go here -->
+	</bean>
+	<bean id="personalIntroduction" class="com.jweb.model.PersonalIntroduction">
 
 		<!-- collaborators and configuration for this bean go here -->
 	</bean>
 
 
-	<bean id="pesonalIntroductionAction" class="com.jweb.action.PersonalIntroductionAction">
-		<!-- collaborators and configuration for this bean go here -->
-	</bean>
+
 	<!-- more bean definitions go here -->
 
 </beans>
