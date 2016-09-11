@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+
+     <!--    <default-action-ref name="index" /> -->
+
+        <global-results>
+            <result name="error">service_error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+        <action name="index">
+            <result>/service_main.jsp</result>
+        </action>
+        <action name="service_personalIntroduction" class="personalIntroductionAction">
+            <result name="show_personalIntroduction">/service_personalIntroduction.jsp</result>
+            <result name="personalIntroduction_edit">/service_personalIntroduction_edit.jsp</result>
+        </action>
+        <action name="study_c">
+            <result>/study_c.jsp</result>
+        </action>
+        <action name="study_cplus">
+            <result>/study_cplus.jsp</result>
+        </action>
+        <action name="study_ruby">
+            <result>/study_ruby.jsp</result>
+        </action>
+        <action name="study_java">
+            <result>/study_java.jsp</result>
+        </action>
+        <action name="study_photoshop">
+            <result>/study_photoshop.jsp</result>
+        </action>
+        <action name="entertainment_jinshanyehua">
+            <result>/entertainment_jinshanyehua.jsp</result>
+        </action>
+        <action name="entertainment_movie">
+            <result>/entertainment_movie.jsp</result>
+        </action>
+        <action name="entertainment_game">
+            <result>/entertainment_game.jsp</result>
+        </action>
+        <action name="service_connect">
+            <result>/service_connect.jsp</result>
+        </action>
+        
+        
+        
+        
+        
+    </package>
+
+
+    <!-- Add packages here -->
+
+</struts>
