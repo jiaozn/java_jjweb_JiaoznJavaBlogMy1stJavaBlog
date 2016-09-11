@@ -2,6 +2,9 @@ package com.jweb.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
 public class PersonalIntroduction {
 	
 	private int id;
@@ -13,6 +16,7 @@ public class PersonalIntroduction {
 	public Date getDate() {
 		return date;
 	}
+	@Id
 	public int getId() {
 		return id;
 	}

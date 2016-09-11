@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd" default-autowire="byType">
 
 	<bean id="personalIntroductionAction" class="com.jweb.action.PersonalIntroductionAction">
 		<!-- collaborators and configuration for this bean go here -->
@@ -13,6 +13,9 @@
 	</bean>
 
 
+<!-- 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> 
+    </bean>
+ -->
 
 	<!-- more bean definitions go here -->
 
