@@ -1,5 +1,6 @@
 package com.jweb.action;
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -20,19 +21,32 @@ public class PersonalIntroductionAction extends ActionSupport{
 	
 	private PersonalIntroductionService personalIntroductionService;
 	private PersonalIntroduction personalIntroduction;
+	private String newPersonalIntroduction;
 	@Override
 	public String execute() throws Exception {
 		//System.out.println(personalIntroductionService);
 		PersonalIntroduction personalIntroduction=personalIntroductionService.getPersonalIntroductionById(1);
-		System.out.println(personalIntroduction.getContent());
+		//System.out.println(personalIntroduction.getContent());
 		Map request =(Map)ActionContext.getContext().get("request");
-		request.put("userinfo", personalIntroduction);
+		request.put("personalIntroductionContent", personalIntroduction);
 		return "show_personalIntroduction";
 	}
 	public String edit(){
+		PersonalIntroduction personalIntroduction=personalIntroductionService.getPersonalIntroductionById(1);
+		//System.out.println(personalIntroduction.getContent());
+		Map request =(Map)ActionContext.getContext().get("request");
+		request.put("personalIntroductionContent", personalIntroduction);
 		return "personalIntroduction_edit";
 		}
-	public String update(){
+	public String updateIntroduction(){
+		personalIntroduction.setId(1);
+		personalIntroduction.setContent(newPersonalIntroduction);
+		personalIntroduction.setDate(new Date());
+		personalIntroductionService.updatePersonalIntroduction(personalIntroduction);
+		
+		PersonalIntroduction personalIntroduction=personalIntroductionService.getPersonalIntroductionById(1);
+		Map request =(Map)ActionContext.getContext().get("request");
+		request.put("personalIntroductionContent", personalIntroduction);
 		return "show_personalIntroduction";
 	}
 	
@@ -52,6 +66,12 @@ public class PersonalIntroductionAction extends ActionSupport{
 	}
 	public void setPersonalIntroduction(PersonalIntroduction personalIntroduction) {
 		this.personalIntroduction = personalIntroduction;
+	}
+	public String getNewPersonalIntroduction() {
+		return newPersonalIntroduction;
+	}
+	public void setNewPersonalIntroduction(String newPersonalIntroduction) {
+		this.newPersonalIntroduction = newPersonalIntroduction;
 	}
 		
 }

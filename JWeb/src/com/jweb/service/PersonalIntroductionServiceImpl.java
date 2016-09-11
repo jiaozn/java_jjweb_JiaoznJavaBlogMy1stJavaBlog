@@ -27,4 +27,11 @@ public class PersonalIntroductionServiceImpl implements PersonalIntroductionServ
 		this.personalIntroductionDao = personalIntroductionDao;
 	}
 
+
+
+	public void updatePersonalIntroduction(
+			PersonalIntroduction personalIntroduction) {
+		personalIntroductionDao.updatePersonalIntroductionDao(personalIntroduction);
+	}
+
 }

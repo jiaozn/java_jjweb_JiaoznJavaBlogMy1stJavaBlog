@@ -34,4 +34,11 @@ public class PersonalIntroductionDaoImpl implements PersonalIntroductionDao{
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+	public void updatePersonalIntroductionDao(
+			PersonalIntroduction personalIntroduction) {
+		Session session=sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.update(personalIntroduction);
+		session.getTransaction().commit();
+	}
 }

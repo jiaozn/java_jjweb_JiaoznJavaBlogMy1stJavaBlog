@@ -24,11 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="main_head.jsp"></jsp:include>
    
 Personal introduction shows here:<br>
-  1 <s:property value="personalIntroduction"/><br>
-   2<s:property value="personalIntroduction.content"/><br>
-   3<s:property value="#request.userinfo.content" /><br>
-   4<s:debug></s:debug>
-   
+  1.PersonalIntroduction对象是否拿到： <s:property value="personalIntroduction"/><br>
+ <hr>
+   2.自我介绍：<s:property value="#request.personalIntroductionContent.content" /><br>
+   <hr>
+   3.更新时间：<s:property value="#request.personalIntroductionContent.date"/><br>
+   4.<s:debug></s:debug>
+   <a href="service_personalIntroduction!edit" >编辑</a>
    <jsp:include page="main_foot.jsp"></jsp:include>
   </body>
 </html>

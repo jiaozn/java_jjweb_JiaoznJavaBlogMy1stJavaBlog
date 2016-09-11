@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -23,9 +23,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-Personal introduction edit here
+   Personal introduction shows here:<br>
+   <form action="service_personalIntroduction!updateIntroduction" method="post">
+   <s:property value="#request.personalIntroductionContent.personalIntroductionContent"/>
+<s:textarea value="#request.personalIntroductionContent.personalIntroductionContent" name="newPersonalIntroduction"></s:textarea><br>
+
+
+   <input type="submit" value="提交"/>
+   </form>
    
-   
+      <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   </body>
 </html>

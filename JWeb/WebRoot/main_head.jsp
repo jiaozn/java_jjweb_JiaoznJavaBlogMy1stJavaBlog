@@ -22,6 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     Welcome to JWeb <br>
+    <a href="service_personalIntroduction">显示个人介绍</a>
+       <a href="service_personalIntroduction!edit">修改个人介绍</a>
     <hr>
   </body>
 </html>
