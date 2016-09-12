@@ -32,6 +32,8 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="com.jweb.model.PersonalIntroduction"/>
+        <mapping class="com.jweb.model.Category"/>
+        <mapping class="com.jweb.model.Artical"/>
 
     </session-factory>
 
