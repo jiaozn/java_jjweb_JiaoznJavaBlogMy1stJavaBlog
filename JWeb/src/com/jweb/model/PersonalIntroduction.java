@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 @Entity
 public class PersonalIntroduction {
@@ -18,6 +19,7 @@ public class PersonalIntroduction {
 		return date;
 	}
 	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}

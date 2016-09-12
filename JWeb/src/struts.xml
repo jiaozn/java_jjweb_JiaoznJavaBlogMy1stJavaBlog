@@ -27,6 +27,10 @@
             <result name="show_personalIntroduction">/service_personalIntroduction.jsp</result>
             <result name="personalIntroduction_edit">/service_personalIntroduction_edit.jsp</result>
         </action>
+         <action name="artical" class="com.jweb.action.ArticalAction">
+         	<result name="add">/study_c_add.jsp</result>
+            <result name="add_success">/study_c_addSuccess.jsp</result>
+        </action>
         <action name="study_c">
             <result>/study_c.jsp</result>
         </action>

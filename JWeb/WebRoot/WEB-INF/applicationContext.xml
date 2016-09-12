@@ -18,6 +18,25 @@
 	</bean>
 	
 	
+	
+	<bean id="articalAction" class="com.jweb.action.ArticalAction">
+		<property name="articalService" ref="articalService"></property>
+	</bean>
+	
+	<bean id="articalService" class="com.jweb.service.ArticalServiceImpl">
+		<property name="articalDao" ref="articalDao"></property>
+	</bean>
+	
+	<bean id="articalDao" class="com.jweb.dao.ArticalDaoImpl">
+		<property name="artical" ref="artical"></property>
+	</bean>
+	
+	<bean id="artical" class="com.jweb.model.Artical">
+	</bean>
+	
+	
+	
+	
 	<!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
 
 	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> 

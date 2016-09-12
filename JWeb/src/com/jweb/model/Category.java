@@ -3,6 +3,7 @@ package com.jweb.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -13,6 +14,7 @@ public class Category {
 		private String name;
 		private Set<Artical> articals;
 		@Id
+		@GeneratedValue
 		public int getId() {
 			return id;
 		}

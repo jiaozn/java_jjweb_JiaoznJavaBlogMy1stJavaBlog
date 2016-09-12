@@ -3,6 +3,7 @@ package com.jweb.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,11 +13,13 @@ public class Artical {
 
 		private int id;
 		private String title;
+		private String content;
 		private String author;
 		private Date date;
 		private Category category;
 		
 		@Id
+		@GeneratedValue
 		public int getId() {
 			return id;
 		}
@@ -42,11 +45,17 @@ public class Artical {
 			this.date = date;
 		}
 		@ManyToOne
-		@JoinColumn(name="category")
+		@JoinColumn(name="cid")
 		public Category getCategory() {
 			return category;
 		}
 		public void setCategory(Category category) {
 			this.category = category;
+		}
+		public String getContent() {
+			return content;
+		}
+		public void setContent(String content) {
+			this.content = content;
 		}
 }

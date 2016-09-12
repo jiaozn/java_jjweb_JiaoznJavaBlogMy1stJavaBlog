@@ -4,12 +4,12 @@ create database jweb;
 use jweb;
 create table personalIntroduction (id int primary key auto_increment,content varchar(1000),date DATETIME);
 
-#################################
-
 #初始化数据
 
 insert into personalIntroduction (content,date) values ("hello world!personal introduction should be here","2016-9-11 11:32:00");
- 
+
 #################################
 
-#文章表结构
+#初始化 category数据表
+insert into category (id,name) values (1,"category1");
+
