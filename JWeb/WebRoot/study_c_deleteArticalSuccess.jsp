@@ -23,8 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-study_c_listAll.jsp<br>
-文章列表：
+study_c_deleteArticalSuccess.jsp<br>
+删除成功！文章列表：
 <hr>
 <table border="1" align="center">
 <tr><td>文章id</td>

@@ -40,4 +40,8 @@ public class ArticalServiceImpl implements ArticalService {
 		return articalDao.listAll();
 	}
 
+	public void delete(Artical artical) {
+		articalDao.deleteById(artical);
+	}
+
 }

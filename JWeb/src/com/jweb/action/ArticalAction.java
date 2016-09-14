@@ -72,8 +72,12 @@ public class ArticalAction extends ActionSupport{
 		return "update_articalSuccess";
 	}
 	
-	public String delete(Artical artical){
-		return null;
+	public String delete(){
+		articalService.delete(artical);
+		list_Artical=articalService.listAll();
+			Map request =(Map)ActionContext.getContext().get("request");
+			request.put("list_Artical", list_Artical);
+		return "delete_articalSuccess";
 	}
 	
 //	public String getById(){

@@ -10,4 +10,5 @@ public interface ArticalService {
 	public void updateArtical(Artical artical);
 	public void addArtical(Artical artical);
 	public List<Artical> listAll();
+	public void delete(Artical artical);
 }

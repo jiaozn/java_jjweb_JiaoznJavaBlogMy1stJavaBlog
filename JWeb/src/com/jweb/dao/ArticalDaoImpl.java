@@ -55,4 +55,10 @@ public class ArticalDaoImpl implements ArticalDao{
 		session.getTransaction().commit();
 		return list_Artical;
 	}
+	public void deleteById(Artical artical) {
+		Session session=sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.delete(artical);
+		session.getTransaction().commit();
+	}
 }

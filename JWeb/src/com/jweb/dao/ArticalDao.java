@@ -10,4 +10,5 @@ public interface ArticalDao{
 	public void updateArticalDao(Artical artical);
 	public void addArtical(Artical artical);
 	public List<Artical> listAll();
+	public void deleteById(Artical artical);
 }
