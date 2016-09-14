@@ -43,9 +43,33 @@ public class ArticalAction extends ActionSupport{
 		request.put("artical", artical);
 		return "show_artical";
 	}
+	public String editArtical(){
+		artical=articalService.getArticalById(artical_id);
+		Map request =(Map)ActionContext.getContext().get("request");
+		request.put("artical", artical);
+		return "edit_artical";
 
-	public String update(Artical artical){
-		return null;
+	}
+	
+	public String updateArticalById(){
+		//System.out.println(artical.getAuthor()+"-------第一次print");
+		artical_id=artical.getId();
+		artical.setDate(new Date());
+//		artical.setTitle(title);
+//		artical.setAuthor(author);
+//		artical.setCategory(category);
+//		artical.setContent(content);
+		articalService.updateArtical(artical);
+		//System.out.println(artical_id);
+		artical=articalService.getArticalById(artical_id);
+		System.out.println(artical_id);
+		//System.out.println(artical.getAuthor()+"-------第2次print");
+		Map request =(Map)ActionContext.getContext().get("request");
+		artical=articalService.getArticalById(artical_id);
+		request.put("articalUpdated", artical);
+		//System.out.println(artical.getAuthor()+"-------第3次print");
+		//System.out.println(artical.getAuthor()+" and content = "+artical.getTitle());
+		return "update_articalSuccess";
 	}
 	
 	public String delete(Artical artical){

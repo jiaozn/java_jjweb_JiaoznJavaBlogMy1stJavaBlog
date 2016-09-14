@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -23,29 +23,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-study_c_listAll.jsp<br>
-文章列表：
+study_c_updateArticalSuccess.jsp
+更新成功！
+文章id:<s:property value="#request.articalUpdated.id"></s:property><br>
+题目：<s:property value="#request.articalUpdated.title"></s:property><br>
+作者：<s:property value="#request.articalUpdated.author"></s:property><br>
+日期：<s:property value="#request.articalUpdated.date"></s:property><br>
 <hr>
-<table border="1" align="center">
-<tr><td>文章id</td>
-		<td>作者</td>
-		<td>题目 </td>
-		<td>日期</td>
-		<td>分类</td>
-		<td>操作</td></tr>
-		
-	<s:iterator value="#request.list_Artical" id="art">
-		
-		<tr><td><s:property value="#art.id"/></td>
-		<td><s:property value="#art.author"/></td>
-		<td><s:property value="#art.title"/></td>
-		<td><s:property value="#art.date"/></td>
-		<td><s:property value="#art.category.name"/></td>
-		<td><a href="artical!listArticalById?artical_id=<s:property value="#art.id"/>">查看</a><a href="artical!editArtical?artical_id=<s:property value="#art.id"/>">修改</a></td></tr>
-	</s:iterator>
-	</table>
-	<s:debug></s:debug>
+正文：<s:property value="#request.articalUpdated.content"></s:property><br>
+  <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
-  
+
   </body>
 </html>

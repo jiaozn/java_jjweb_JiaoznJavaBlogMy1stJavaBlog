@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,9 @@ public class ArticalDaoImpl implements ArticalDao{
 			Artical artical) {
 		Session session=sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		session.update(artical);
+		//session.update(artical);
+		Query query = session.createQuery("update Artical art set art.title =:title,art.author=:author,art.category=:category,art.content=:content where id = :artid").setString("title", artical.getTitle()).setString("author", artical.getAuthor()).setString("content", artical.getContent()).setInteger("artid", artical.getId()).setParameter("category", artical.getCategory());  
+        query.executeUpdate();  
 		session.getTransaction().commit();
 	}
 	public Artical getArtical() {

@@ -32,6 +32,8 @@
             <result name="add_success">/study_c_addSuccess.jsp</result>
             <result name="list_all">/study_c_listAll.jsp</result>
             <result name="show_artical">/study_c_showArtical.jsp</result>
+            <result name="edit_artical">/study_c_editArtical.jsp</result>
+            <result name="update_articalSuccess">/study_c_updateArticalSuccess.jsp</result>
         </action>
         <action name="study_c">
             <result>/study_c.jsp</result>
