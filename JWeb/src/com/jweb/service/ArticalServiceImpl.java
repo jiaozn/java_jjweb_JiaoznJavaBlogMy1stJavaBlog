@@ -1,5 +1,7 @@
 package com.jweb.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -32,6 +34,11 @@ public class ArticalServiceImpl implements ArticalService {
 
 	public void addArtical(Artical artical) {
 		articalDao.addArtical(artical);
+	}
+
+	public List<Artical> listAll() {
+		// TODO Auto-generated method stub
+		return articalDao.listAll();
 	}
 
 }

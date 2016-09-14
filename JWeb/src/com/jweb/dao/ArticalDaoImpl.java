@@ -1,5 +1,7 @@
 package com.jweb.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.hibernate.Session;
@@ -13,7 +15,7 @@ import com.jweb.util.HibernateUtils;
 @Component
 public class ArticalDaoImpl implements ArticalDao{
 	Artical artical;
-	
+	List<Artical> list_Artical;
 	SessionFactory sessionFactory=HibernateUtils.getSessionFactory();
 	public Artical getById(int id){
 		Session session=sessionFactory.getCurrentSession();
@@ -41,5 +43,13 @@ public class ArticalDaoImpl implements ArticalDao{
 		session.beginTransaction();
 		session.save(artical);
 		session.getTransaction().commit();
+	}
+	public List<Artical> listAll() {
+		Session session=sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		list_Artical=(List<Artical>) session.createQuery("from Artical").list();
+	//	System.out.println(list_Artical.get(1).getContent());
+		session.getTransaction().commit();
+		return list_Artical;
 	}
 }

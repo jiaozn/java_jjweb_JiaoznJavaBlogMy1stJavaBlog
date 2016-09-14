@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -23,8 +23,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-study_c_addSuccess.jsp
-文章新增成功了！ 
+study_c_listAll.jsp<br>
+文章列表：
+<hr>
+<table border="1" align="center">
+<tr><td>文章id</td>
+		<td>作者</td>
+		<td>题目 </td>
+		<td>日期</td>
+		<td>分类</td>
+		<td>操作</td></tr>
+		
+	<s:iterator value="#request.list_Artical" id="art">
+		
+		<tr><td><s:property value="#art.id"/></td>
+		<td><s:property value="#art.author"/></td>
+		<td><s:property value="#art.title"/></td>
+		<td><s:property value="#art.date"/></td>
+		<td><s:property value="#art.category.name"/></td>
+		<td><a href="">修改</a></td></tr>
+	</s:iterator>
+	</table>
+	<s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   
   </body>

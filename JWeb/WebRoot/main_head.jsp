@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="service_personalIntroduction">显示个人介绍</a>
        <a href="service_personalIntroduction!edit">修改个人介绍</a>
        <a href="artical!add">新增文章</a>
+       <a href="artical!listAll">显示所有文章</a>
     <hr>
   </body>
 </html>
