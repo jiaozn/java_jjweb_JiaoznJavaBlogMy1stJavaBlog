@@ -37,7 +37,6 @@ public class ArticalServiceImpl implements ArticalService {
 	}
 
 	public List<Artical> listAll() {
-		// TODO Auto-generated method stub
 		return articalDao.listAll();
 	}
 

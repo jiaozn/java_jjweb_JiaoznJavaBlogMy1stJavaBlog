@@ -17,6 +17,7 @@ public class ArticalAction extends ActionSupport{
 	private ArticalService articalService;
 	private Artical artical;
 	private int category_id;
+	private int artical_id;
 	private List<Artical> list_Artical;
 	public String add(){
 		return "add";
@@ -35,6 +36,12 @@ public class ArticalAction extends ActionSupport{
 		Map request =(Map)ActionContext.getContext().get("request");
 		request.put("list_Artical", list_Artical);
 		return "list_all";
+	}
+	public String listArticalById(){
+		artical=articalService.getArticalById(artical_id);
+		Map request =(Map)ActionContext.getContext().get("request");
+		request.put("artical", artical);
+		return "show_artical";
 	}
 
 	public String update(Artical artical){
@@ -75,6 +82,12 @@ public class ArticalAction extends ActionSupport{
 	}
 	public void setList_Artical(List<Artical> list_Artical) {
 		this.list_Artical = list_Artical;
+	}
+	public int getArtical_id() {
+		return artical_id;
+	}
+	public void setArtical_id(int artical_id) {
+		this.artical_id = artical_id;
 	}
 
 }
