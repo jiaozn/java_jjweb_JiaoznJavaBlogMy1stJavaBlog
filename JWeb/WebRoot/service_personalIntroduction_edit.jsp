@@ -23,13 +23,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-   Personal introduction shows here:<br>
-   <form action="service_personalIntroduction!updateIntroduction" method="post">
-   <s:property value="#request.personalIntroductionContent.personalIntroductionContent"/>
-<s:textarea value="#request.personalIntroductionContent.personalIntroductionContent" name="newPersonalIntroduction"></s:textarea><br>
+ <p>  Personal introduction shows here:<br></p>
+   <form action="service_personalIntroduction!updateIntroduction" method="post" role="form">
+   <label><s:property value="#request.personalIntroductionContent.personalIntroductionContent"/></label>
+<s:textarea value="#request.personalIntroductionContent.personalIntroductionContent" name="newPersonalIntroduction" class="form-control" rows="3"></s:textarea><br>
 
 
-   <input type="submit" value="提交"/>
+   <input type="submit" value="提交" class="btn btn-default"/>
    </form>
    
       <s:debug></s:debug>

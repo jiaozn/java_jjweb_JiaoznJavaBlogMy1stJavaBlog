@@ -23,13 +23,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-study_c .jsp   
-<form action="artical!executeAdd" name="artical" method="post" >
-   标题：<input type="text" name="artical.title"/>
-   正文：<textarea rows="5" cols="20" name="artical.content"></textarea>
-   作者：<input type="text" name="artical.author"/>
-   分类：<input type="text" name="category_id"/>
-   <input type="submit"/> 
+<h6>study_c .jsp</h6>   
+<form action="artical!executeAdd" name="artical" method="post" role="form" >
+<div class="form-group">
+   <label>标题：</label><input type="text" name="artical.title" class="form-control"/>
+   </div>
+   <div class="form-group">
+   <label>正文：</label>
+   <textarea name="artical.content" class="form-control" rows="3"></textarea>
+   </div>
+   <div class="form-group">
+   <label>作者：</label>
+   <input type="text" name="artical.author" class="form-control"/>
+   </div>
+   <div class="form-group">
+<label>分类：</label>
+<input type="text" name="category_id" class="form-control"/>
+   </div>
+   <input type="submit" class="btn btn-default"/> 
    </form>
    <jsp:include page="main_foot.jsp"></jsp:include>
   </body>
