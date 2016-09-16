@@ -24,9 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="main_head.jsp"></jsp:include>
    
 study_c_listAll.jsp<br>
-文章列表：
+<h2>文章列表：</h2>
 <hr>
-<table border="1" align="center">
+<table class="table">
 <tr><td>文章id</td>
 		<td>作者</td>
 		<td>题目 </td>
