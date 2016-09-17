@@ -19,7 +19,7 @@ import com.jweb.model.UploadFileDTO;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class UploadAction extends ActionSupport {  
+public class MovieAction extends ActionSupport {  
 	  
     private static final long serialVersionUID = 1L;  
     private File file;// 对应文件域的file，封装文件内容   c:....+文件名.txt
@@ -74,7 +74,7 @@ public class UploadAction extends ActionSupport {
     	try {
     		File fileTem=new File(fileStr);
     		fileFileName=fileTem.getName();
-    	//	System.out.println(fileFileName);
+    		System.out.println(fileFileName);
 			dwInputStream=new FileInputStream(fileTem);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -83,6 +83,19 @@ public class UploadAction extends ActionSupport {
     	
     	return "down_load";
     }
+    
+    
+    public String play(){
+    		File fileTem=new File(fileStr);
+    		fileFileName=fileTem.getName();
+    		//System.out.println(fileFileName);
+    		Map request =(Map)ActionContext.getContext().get("request");
+    		request.put("movieName", fileFileName);
+    		//request.put("listDirStr", listDirStr);
+    	return "play";
+    }
+    
+    
     public String delete(){
     	file=new File(fileStr);
     	file.delete();
