@@ -66,6 +66,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="artical!add">新增</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文件管理<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="upload!listAll">显示所有</a></li>
+            <li><a href="upload">新增</a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">视频<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="movie!listAll">显示所有</a></li>
+            <li><a href="movie">新增</a></li>
+          </ul>
+        </li>
       </ul>
        	<!-- 
       <form class="navbar-form navbar-left">

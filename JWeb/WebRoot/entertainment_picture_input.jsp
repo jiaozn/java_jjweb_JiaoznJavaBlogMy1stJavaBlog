@@ -49,12 +49,14 @@ study_c .jsp
   </form>  
    --%>
    
-   <form action="upload" method="post" enctype="multipart/form-data">  
-<p>标题：${title}</p>    
-<br/>  <p>
-文件：${fileFileName }</p> 
-<br>  <p>上传成功！</p>
-<input type="submit" value="继续上传">  
+   <form action="upload" method="post" enctype="multipart/form-data" role="form">  
+   <div class="form-group">
+标题：<input class="form-control" type="text" name="title">  </div>
+<div class="form-group">
+文件：<input type="file" name="File">  </div>
+<br>  
+<div class="form-group">
+<input type="submit" value="上传" class="btn btn-default">  </div>
 </form>  
    
    

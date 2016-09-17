@@ -36,6 +36,31 @@
             <result name="update_articalSuccess">/study_c_updateArticalSuccess.jsp</result>
             <result name="delete_articalSuccess">/study_c_deleteArticalSuccess.jsp</result>
         </action>
+        
+        <action name="movie" class="com.jweb.action.MovieAction">  
+            <!-- 配置fileUpload拦截器 -->  
+            <interceptor-ref name="fileUpload">  
+                <!-- 配置允许上传的文件类型-->  
+                <!-- <param name="allowedTypes">image/x-ms-bmp,image/jpeg,image/gif,image/png,image/x-png,application/excel,application/vnd.ms-excel</param> -->   
+                <!-- 配置允许上传的文件大小 -->  
+                <param name="maximumSize">2048000000000</param>   
+            </interceptor-ref>  
+            <interceptor-ref name="defaultStack"></interceptor-ref>  
+            <!-- 配置上传文件的保存的相对路径 -->  
+            <param name="savePath">/movies</param>  
+            <!-- 配置逻辑视图和实际资源的对应关系 -->  
+            <result>/entertainment_movie.jsp</result>  
+            <result name="input">/entertainment_movie_input.jsp</result>  
+            <result name="list_All">/entertainment_movie_listAll.jsp</result>  
+            <result type="stream" name="down_load">
+            	<param name="inputName">dwInputStream</param>
+            	<param name="contentDisposition">attachment;filename="${fileFileName}"</param>
+            	<param name="contentType">application/octet-stream</param>
+            	<param name="bufferSize">1024</param>
+            </result>  
+            <result name="play">/entertainment_movie_play.jsp</result>
+        </action>  
+        
         <action name="study_c">
             <result>/study_c.jsp</result>
         </action>
@@ -60,17 +85,73 @@
         <action name="entertainment_game">
             <result>/entertainment_game.jsp</result>
         </action>
-        <action name="service_connect">
+<!--         <action name="service_upload">
+            <result>/entertainment_game.jsp</result>
+        
+        </action>
+ -->        <action name="service_connect">
             <result>/service_connect.jsp</result>
         </action>
         
         
-        
-        
+         <action name="upload" class="com.jweb.action.UploadAction">  
+            <!-- 配置fileUpload拦截器 -->  
+            <interceptor-ref name="fileUpload">  
+                <!-- 配置允许上传的文件类型-->  
+                <!-- <param name="allowedTypes">image/x-ms-bmp,image/jpeg,image/gif,image/png,image/x-png,application/excel,application/vnd.ms-excel</param> -->   
+                <!-- 配置允许上传的文件大小 -->  
+                <param name="maximumSize">2048000000000</param>   
+            </interceptor-ref>  
+            <interceptor-ref name="defaultStack"></interceptor-ref>  
+            <!-- 配置上传文件的保存的相对路径 -->  
+            <param name="savePath">/uploadFiles</param>  
+            <!-- 配置逻辑视图和实际资源的对应关系 -->  
+            <result>/entertainment_picture.jsp</result>  
+            <result name="input">/entertainment_picture_input.jsp</result>  
+            <result name="list_All">/entertainment_picture_listAll.jsp</result>  
+            <result type="stream" name="down_load">
+            	<param name="inputName">dwInputStream</param>
+            	<param name="contentDisposition">attachment;filename="${fileFileName}"</param>
+            	<param name="contentType">application/octet-stream</param>
+            	<param name="bufferSize">1024</param>
+            </result>  
+        </action>  
         
     </package>
 
 
+  <!-- 指定struts国际化资源文件的baseName -->  
+    <constant name="struts.custom.i18n.resources" value="messageResource"/>  
+    <!-- 指定每次HTTP请求时是否重新加载国际化资源文件，默认为false,开发阶段设为true -->  
+    <constant name="struts.i18n.reload" value="true"/>  
+    <!-- 配置应用的编码方式 -->  
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+<!-- struts.xml变更时是否自动重新加载 -->  
+    <constant name="struts.configuration.xml.reload" value="true"/>  
+    <!-- 限定上传文件最大大小4M,struts2默认maxSize为2M -->  
+    <constant name="struts.multipart.maxSize" value="4194304000000"></constant>  
+    <!-- 指定上传文件时临时文件的存放路径,设为"/tempUpload"将在 项目所在盘下创建文件夹tempUpload-->  
+    <constant name="struts.multipart.saveDir" value="/tempUpload"></constant>  
+      
+    <!--     action 定义  
+    <package name="mystruts" extends="struts-default">  
+                <action name="upload" class="com.petrochina.action.business.UploadAction">  
+            配置fileUpload拦截器  
+            <interceptor-ref name="fileUpload">  
+                配置允许上传的文件类型  
+                <param name="allowedTypes">image/x-ms-bmp,image/jpeg,image/gif,image/png,image/x-png,application/excel,application/vnd.ms-excel</param>   
+                配置允许上传的文件大小  
+                <param name="maximumSize">2048000</param>  
+            </interceptor-ref>  
+            <interceptor-ref name="defaultStack"></interceptor-ref>  
+            配置上传文件的保存的相对路径  
+            <param name="savePath">/test</param>  
+            配置逻辑视图和实际资源的对应关系  
+            <result>/WEB-INF/content/business/upload.jsp</result>  
+            <result name="input">/WEB-INF/content/business/upload-input.jsp</result>  
+        </action>  
+    </package>  
+ -->
     <!-- Add packages here -->
 
 </struts>
