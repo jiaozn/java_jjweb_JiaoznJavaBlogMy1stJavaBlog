@@ -8,7 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+     <!-- Make sure the path to CKEditor is correct. -->
+        <script src="ckeditor/ckeditor.js"></script>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -30,7 +31,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    <div class="form-group">
    <label>正文：</label>
-   <textarea name="artical.content" class="form-control" rows="3"></textarea>
+   <textarea id="editor1" name="artical.content" class="form-control" rows="3"></textarea>
+   <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1' );
+            </script>
    </div>
    <div class="form-group">
    <label>作者：</label>
