@@ -21,5 +21,6 @@
 		<property name="maxWait">500</property>
 		<property name="defaultAutoCommit">false</property>
 		<mapping class="com.jjweb.model.Student" />
+		<mapping class="com.jjweb.model.Introduction" />
 	</session-factory>
 </hibernate-configuration>

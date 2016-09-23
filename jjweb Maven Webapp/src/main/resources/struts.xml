@@ -17,4 +17,95 @@
 	<constant name="struts.action.extension" value="do,action,jhtml,," /> 
 	 <!-- Struts Annotation -->
 	<constant name="actionPackages" value="com.jjweb.action" />
+	
+	
+	 <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	    <!-- 限定上传文件最大大小4M,struts2默认maxSize为2M -->  
+    <constant name="struts.multipart.maxSize" value="4194304000000"></constant>  
+    <!-- 指定上传文件时临时文件的存放路径,设为"/tempUpload"将在 项目所在盘下创建文件夹tempUpload-->  
+    <constant name="struts.multipart.saveDir" value="/tempUpload"></constant> 
+    
+    
+    
+    
+    
+    
+    
+    
+       <package name="default" namespace="/" extends="struts-default">
+
+     <!--    <default-action-ref name="index" /> -->
+
+        <global-results>
+            <result name="error">/WEB-INF/content/service_error.jsp</result>
+        </global-results>
+
+      <!--      <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+		-->
+        <action name="index">
+            <result>/WEB-INF/content/service_introduction_show.jsp</result>
+        </action>											
+        <action name="service_personalIntroduction" class="com.jweb.action.PersonalIntroductionAction">
+            <result name="show_personalIntroduction">/service_personalIntroduction.jsp</result>
+            <result name="personalIntroduction_edit">/service_personalIntroduction_edit.jsp</result>
+        </action>
+         <action name="artical" class="com.jweb.action.ArticalAction">
+         	<result name="add">/study_c_add.jsp</result>
+            <result name="add_success">/study_c_addSuccess.jsp</result>
+            <result name="list_all">/study_c_listAll.jsp</result>
+            <result name="show_artical">/study_c_showArtical.jsp</result>
+            <result name="edit_artical">/study_c_editArtical.jsp</result>
+            <result name="update_articalSuccess">/study_c_updateArticalSuccess.jsp</result>
+            <result name="delete_articalSuccess">/study_c_deleteArticalSuccess.jsp</result>
+        </action>
+        
+        <action name="movie" class="com.jweb.action.MovieAction">  
+            <!-- 配置fileUpload拦截器 -->  
+            <interceptor-ref name="fileUpload">  
+                <!-- 配置允许上传的文件类型-->  
+                <!-- <param name="allowedTypes">image/x-ms-bmp,image/jpeg,image/gif,image/png,image/x-png,application/excel,application/vnd.ms-excel</param> -->   
+                <!-- 配置允许上传的文件大小 -->  
+                <param name="maximumSize">2048000000000</param>   
+            </interceptor-ref>  
+            <interceptor-ref name="defaultStack"></interceptor-ref>  
+            <!-- 配置上传文件的保存的相对路径 -->  
+            <param name="savePath">/movies</param>  
+            <!-- 配置逻辑视图和实际资源的对应关系 -->  
+            <result>/entertainment_movie.jsp</result>  
+            <result name="input">/entertainment_movie_input.jsp</result>  
+            <result name="list_All">/entertainment_movie_listAll.jsp</result>  
+            <result type="stream" name="down_load">
+            	<param name="inputName">dwInputStream</param>
+            	<param name="contentDisposition">attachment;filename="${fileFileName}"</param>
+            	<param name="contentType">application/octet-stream</param>
+            	<param name="bufferSize">1024</param>
+            </result>  
+            <result name="play">/entertainment_movie_play.jsp</result>
+        </action>  
+    
+        <action name="upload" class="com.jweb.action.UploadAction">  
+            <!-- 配置fileUpload拦截器 -->  
+            <interceptor-ref name="fileUpload">  
+                <!-- 配置允许上传的文件类型-->  
+                <!-- <param name="allowedTypes">image/x-ms-bmp,image/jpeg,image/gif,image/png,image/x-png,application/excel,application/vnd.ms-excel</param> -->   
+                <!-- 配置允许上传的文件大小 -->  
+                <param name="maximumSize">2048000000000</param>   
+            </interceptor-ref>  
+            <interceptor-ref name="defaultStack"></interceptor-ref>  
+            <!-- 配置上传文件的保存的相对路径 -->  
+            <param name="savePath">/uploadFiles</param>  
+            <!-- 配置逻辑视图和实际资源的对应关系 -->  
+            <result>/entertainment_picture.jsp</result>  
+            <result name="input">/entertainment_picture_input.jsp</result>  
+            <result name="list_All">/entertainment_picture_listAll.jsp</result>  
+            <result type="stream" name="down_load">
+            	<param name="inputName">dwInputStream</param>
+            	<param name="contentDisposition">attachment;filename="${fileFileName}"</param>
+            	<param name="contentType">application/octet-stream</param>
+            	<param name="bufferSize">1024</param>
+            </result>  
+        </action>  
+        </package>
 </struts> 
