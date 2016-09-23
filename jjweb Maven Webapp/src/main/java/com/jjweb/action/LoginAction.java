@@ -1,7 +1,9 @@
 package com.jjweb.action;
 
 import javax.annotation.Resource;
-import javax.xml.ws.Action;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
 
 import com.jjweb.service.StudentService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -24,6 +26,9 @@ public class LoginAction extends ActionSupport{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Action(value = "login", results = {
+			@Result(name = INPUT, location = "/WEB-INF/content/fail.jsp"),
+			@Result(name = SUCCESS, location = "/WEB-INF/content/success.jsp") }) 
 	public String execute(){
 		if(name.equals("steve")&&password.equals("123"))
 			return SUCCESS;
