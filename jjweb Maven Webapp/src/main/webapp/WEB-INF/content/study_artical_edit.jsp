@@ -3,14 +3,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
   <!-- Make sure the path to CKEditor is correct. -->
         <script src="ckeditor/ckeditor.js"></script>
     <base href="<%=basePath%>">
-    
+     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -25,21 +25,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
- <p> 编辑主页文字:<br></p>
-   <form action="introduction_editCommit" method="post" role="form">
-   <label>正文内容：</label>
-   
-<textarea id="editor1" name="introduction.content" class="form-control" rows="3"><s:property value="introduction.content"/></textarea><br>
-
-<script>
+<h6>study_c .jsp</h6>   
+<form action="artical_editCommit" name="articalForm" method="post" role="form" >
+<div class="form-group">
+   <label>标题：</label><input type="text" name="artical.title" class="form-control" value="${artical.title }"/>
+   </div>
+   <div class="form-group">
+   <label>正文：</label>
+   <textarea id="editor1" name="artical.content" class="form-control" rows="3"></textarea>
+   <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
                 CKEDITOR.replace( 'editor1' );
             </script>
-   <input type="submit" value="提交" class="btn btn-default"/>
+   </div>
+   <div class="form-group">
+   <label>作者：</label>
+   <input type="text" name="artical.author" class="form-control" value="${artical.author }"/>
+   </div>
+   <div class="form-group">
+<label>分类：</label>
+<input type="text" name="category_id" class="form-control" value="${artical.category.id }"/>
+   </div>
+   <input type="submit" class="btn btn-default"/> 
    </form>
-   
-      <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   </body>
 </html>

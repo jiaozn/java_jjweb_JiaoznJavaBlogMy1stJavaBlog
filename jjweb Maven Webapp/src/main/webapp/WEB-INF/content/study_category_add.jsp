@@ -3,12 +3,13 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-   <base href="<%=basePath%>">
-    
+    <base href="<%=basePath%>">
+     <!-- Make sure the path to CKEditor is correct. -->
+        <script src="ckeditor/ckeditor.js"></script>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -22,15 +23,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
-   <p>
+   
+<h6>study_c .jsp</h6>   
+<form action="category_addCommit" name="categoryForm" method="post" role="form" >
 
-   <h3>Hello,World!<br>
-   <s:property value="introduction.content" escape="false"/></h3><br>
-   <h4>Yours,Jiao<br></h4>
-  <s:property value="introduction.time"/><br>
-   <a href="introduction_edit" >修改</a>
+分类名称：<input type="text" name="category.name" class="form-control"/>
+   <input type="submit" class="btn btn-default"/> 
+   </form>
    <jsp:include page="main_foot.jsp"></jsp:include>
-   
-   
   </body>
 </html>

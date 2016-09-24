@@ -46,24 +46,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--  <li><a href="service_personalIntroduction">显示个人介绍 </a></li>
         <li><a href="service_personalIntroduction!edit">修改个人介绍</a></li>
         -->
-        <li class="dropdown">
+        <li><a href="introduction_show">主页 </a></li>
+       <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Index!<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="introduction_show">显示个人介绍</a></li>
             <li><a href="introduction_edit">修改个人介绍</a></li>
-            <!-- <li><a href="#">Something else here</a></li>
+             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">One more separated link</a></li>
-             -->
+             
+          </ul>
+        </li>-->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">日志<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="artical_showAll">显示所有</a></li>
+            <li><a href="artical_add">新增日志</a></li>
           </ul>
         </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">C语言区<span class="caret"></span></a>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">日志分类<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="artical!listAll">显示所有</a></li>
-            <li><a href="artical!add">新增</a></li>
+            <li><a href="category_showAll">显示所有</a></li>
+            <li><a href="category_add">新增分类</a></li>
           </ul>
         </li>
         <li class="dropdown">

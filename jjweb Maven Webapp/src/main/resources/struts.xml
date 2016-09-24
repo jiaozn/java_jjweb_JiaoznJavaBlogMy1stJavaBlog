@@ -26,12 +26,6 @@
     <constant name="struts.multipart.saveDir" value="/tempUpload"></constant> 
     
     
-    
-    
-    
-    
-    
-    
        <package name="default" namespace="/" extends="struts-default">
 
      <!--    <default-action-ref name="index" /> -->
@@ -44,22 +38,9 @@
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
 		-->
-        <action name="index">
+       <!--  <action name="index">
             <result>/WEB-INF/content/service_introduction_show.jsp</result>
-        </action>											
-        <action name="service_personalIntroduction" class="com.jweb.action.PersonalIntroductionAction">
-            <result name="show_personalIntroduction">/service_personalIntroduction.jsp</result>
-            <result name="personalIntroduction_edit">/service_personalIntroduction_edit.jsp</result>
-        </action>
-         <action name="artical" class="com.jweb.action.ArticalAction">
-         	<result name="add">/study_c_add.jsp</result>
-            <result name="add_success">/study_c_addSuccess.jsp</result>
-            <result name="list_all">/study_c_listAll.jsp</result>
-            <result name="show_artical">/study_c_showArtical.jsp</result>
-            <result name="edit_artical">/study_c_editArtical.jsp</result>
-            <result name="update_articalSuccess">/study_c_updateArticalSuccess.jsp</result>
-            <result name="delete_articalSuccess">/study_c_deleteArticalSuccess.jsp</result>
-        </action>
+        </action> -->
         
         <action name="movie" class="com.jweb.action.MovieAction">  
             <!-- 配置fileUpload拦截器 -->  

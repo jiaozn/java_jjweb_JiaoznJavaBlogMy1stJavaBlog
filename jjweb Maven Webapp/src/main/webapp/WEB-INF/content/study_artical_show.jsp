@@ -3,11 +3,11 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-   <base href="<%=basePath%>">
+    <base href="<%=basePath%>">
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -22,15 +22,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
-   <p>
-
-   <h3>Hello,World!<br>
-   <s:property value="introduction.content" escape="false"/></h3><br>
-   <h4>Yours,Jiao<br></h4>
-  <s:property value="introduction.time"/><br>
-   <a href="introduction_edit" >修改</a>
+   
+study_c_showArtical.jsp
+题目：<s:property value="artical.title"></s:property><br>
+作者：<s:property value="artical.author"></s:property><br>
+日期：<s:property value="artical.time"></s:property><br>
+<hr>
+正文：<s:property value="artical.content" escape="false"></s:property><br>
+  <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
-   
-   
+
   </body>
 </html>

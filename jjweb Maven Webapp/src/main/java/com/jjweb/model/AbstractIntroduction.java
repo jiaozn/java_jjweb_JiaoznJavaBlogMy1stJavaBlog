@@ -43,7 +43,7 @@ public abstract class AbstractIntroduction implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "content", nullable = false, length = 1)
+	@Column(name = "content", nullable = false, length=16777216)
 	public String getContent() {
 		return this.content;
 	}

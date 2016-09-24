@@ -20,7 +20,11 @@
 		<property name="maxIdle">30</property>
 		<property name="maxWait">500</property>
 		<property name="defaultAutoCommit">false</property>
-		<mapping class="com.jjweb.model.Student" />
+		  <property name="hbm2ddl.auto">update</property>
+		<!-- <mapping class="com.jjweb.model.Student" />
 		<mapping class="com.jjweb.model.Introduction" />
+		<mapping class="com.jjweb.model.Artical" />
+		<mapping class="com.jjweb.model.Category" /> -->
+		
 	</session-factory>
 </hibernate-configuration>

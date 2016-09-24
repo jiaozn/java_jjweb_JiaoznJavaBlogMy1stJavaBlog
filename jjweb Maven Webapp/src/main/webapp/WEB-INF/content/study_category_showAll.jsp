@@ -3,11 +3,11 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-   <base href="<%=basePath%>">
+    <base href="<%=basePath%>">
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -22,15 +22,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
-   <p>
-
-   <h3>Hello,World!<br>
-   <s:property value="introduction.content" escape="false"/></h3><br>
-   <h4>Yours,Jiao<br></h4>
-  <s:property value="introduction.time"/><br>
-   <a href="introduction_edit" >修改</a>
+   
+study_c_listAll.jsp<br>
+<h2>分类列表：</h2>
+<hr>
+<table class="table">
+<tr><td>文件夹id</td>
+		<td>文件夹名字</td>
+		<td>操作</td></tr>
+		
+	<s:iterator value="listCategory" var="cat">
+		
+		<tr><td><s:property value="#cat.id"/></td>
+		<td><s:property value="#cat.name"/></td>
+		<td>
+		<a href="category_edit?category.id=<s:property value="#cat.id"/>">修改   </a>
+		<a href="category_delete?category.id=<s:property value="#cat.id"/>">删除   </a></td></tr>
+	</s:iterator>
+	</table>
+	<a href="category_add">新增</a>
+	
+	<s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
-   
-   
+  
   </body>
 </html>
