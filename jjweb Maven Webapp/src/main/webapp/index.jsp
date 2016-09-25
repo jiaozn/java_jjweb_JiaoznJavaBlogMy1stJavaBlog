@@ -3,6 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <body>
+  <jsp:include page="WEB-INF/content/main_head.jsp"></jsp:include>
 	<h2>Hello World!</h2>
 	<s:form action="login">
 		<s:textfield name="name" value="steve"></s:textfield>

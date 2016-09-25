@@ -26,11 +26,12 @@ public class LoginAction extends ActionSupport{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Action(value = "login", results = {
+	@Action(value = "login2", results = {
 			@Result(name = INPUT, location = "/WEB-INF/content/fail.jsp"),
 			@Result(name = SUCCESS, location = "/WEB-INF/content/success.jsp") }) 
 	public String execute(){
-		if(name.equals("steve")&&password.equals("123"))
+		if(name.equals("jiaozn")&&password.equals("aghuizhang"))
+			
 			return SUCCESS;
 		else
 			return INPUT;

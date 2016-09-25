@@ -45,4 +45,10 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="UserDAO"
+		class="com.jjweb.model.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 	</beans>
