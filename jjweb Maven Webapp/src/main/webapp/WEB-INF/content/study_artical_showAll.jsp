@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.jjweb.model.User" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,6 +23,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
+   	 <%! int au; %>
+<%
+			User userx= (User)session.getAttribute("userx") ;
+	if (userx==null)
+			au=0;
+	else
+	au=userx.getAuthority();
+			//游客0，登陆3，管理7
+				%>
+   
 study_c_listAll.jsp<br>
 <h2>文章列表：</h2>
 <hr>
@@ -42,12 +52,20 @@ study_c_listAll.jsp<br>
 		<td><s:property value="#art.time"/></td>
 		<td><s:property value="#art.category.name"/></td>
 		<td><a href="artical_show?artical.id=<s:property value="#art.id"/>">查看   </a>
+		<%if(au==7){ %>
 		<a href="artical_edit?artical.id=<s:property value="#art.id"/>">修改   </a>
 		<a href="artical_delete?artical.id=<s:property value="#art.id"/>">删除   </a></td></tr>
+		<%} %>
 	</s:iterator>
 	</table>
-	<a href="artical_add">新增</a>
 	
+
+	
+	
+	
+	<%if(au==7){ %>
+	<a href="artical_add">新增</a>
+	<%} %>
 	<s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   

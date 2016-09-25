@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.jjweb.model.User" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -28,7 +28,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <s:property value="introduction.content" escape="false"/></h3><br>
    <h4>Yours,Jiao<br></h4>
   <s:property value="introduction.time"/><br>
+  <%! int au; %>
+<%
+			User userx= (User)session.getAttribute("userx") ;
+	if (userx==null)
+			au=0;
+	else
+	au=userx.getAuthority();
+			//游客0，登陆3，管理7
+				%>
+  <%if(au==7){ %>
    <a href="introduction_edit" >修改</a>
+   <%} %>
    <jsp:include page="main_foot.jsp"></jsp:include>
    
    
