@@ -10,7 +10,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 public class ArticalDAO extends HibernateDaoSupport{
 	private static final Logger log = LoggerFactory
-			.getLogger(IntroductionDAO.class);
+			.getLogger(ArticalDAO.class);
 	// property constants
 	public static final String CONTENT = "content";
 

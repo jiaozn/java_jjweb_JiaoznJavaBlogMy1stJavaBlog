@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>  <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
-<struts>  <!-- 开启使用开发模式，详细错误提示 -->
+<struts>  
+<!-- 开启使用开发模式，详细错误提示 -->
 	<constant name="struts.devMode" value="true" /> 
 	 <!-- 将对象交给spring管理 -->
 	<constant name="struts.objectFactory" value="spring" /> 
@@ -42,7 +43,7 @@
             <result>/WEB-INF/content/service_introduction_show.jsp</result>
         </action> -->
         
-        <action name="movie" class="com.jweb.action.MovieAction">  
+        <action name="movie" class="com.jjweb.action.MovieAction">  
             <!-- 配置fileUpload拦截器 -->  
             <interceptor-ref name="fileUpload">  
                 <!-- 配置允许上传的文件类型-->  
@@ -54,19 +55,19 @@
             <!-- 配置上传文件的保存的相对路径 -->  
             <param name="savePath">/movies</param>  
             <!-- 配置逻辑视图和实际资源的对应关系 -->  
-            <result>/entertainment_movie.jsp</result>  
-            <result name="input">/entertainment_movie_input.jsp</result>  
-            <result name="list_All">/entertainment_movie_listAll.jsp</result>  
+            <result name="success">/WEB-INF/content/entertainment_movie.jsp</result>  
+            <result name="input">/WEB-INF/content/entertainment_movie_input.jsp</result>  
+            <result name="list_All">/WEB-INF/content/entertainment_movie_listAll.jsp</result>  
             <result type="stream" name="down_load">
             	<param name="inputName">dwInputStream</param>
             	<param name="contentDisposition">attachment;filename="${fileFileName}"</param>
             	<param name="contentType">application/octet-stream</param>
             	<param name="bufferSize">1024</param>
             </result>  
-            <result name="play">/entertainment_movie_play.jsp</result>
+            <result name="play">/WEB-INF/content/entertainment_movie_play.jsp</result>
         </action>  
     
-        <action name="upload" class="com.jweb.action.UploadAction">  
+        <action name="upload" class="com.jjweb.action.UploadAction">  
             <!-- 配置fileUpload拦截器 -->  
             <interceptor-ref name="fileUpload">  
                 <!-- 配置允许上传的文件类型-->  
@@ -78,9 +79,9 @@
             <!-- 配置上传文件的保存的相对路径 -->  
             <param name="savePath">/uploadFiles</param>  
             <!-- 配置逻辑视图和实际资源的对应关系 -->  
-            <result>/entertainment_picture.jsp</result>  
-            <result name="input">/entertainment_picture_input.jsp</result>  
-            <result name="list_All">/entertainment_picture_listAll.jsp</result>  
+            <result>/WEB-INF/content/entertainment_picture.jsp</result>  
+            <result name="input">/WEB-INF/content/entertainment_picture_input.jsp</result>  
+            <result name="list_All">/WEB-INF/content/entertainment_picture_listAll.jsp</result>  
             <result type="stream" name="down_load">
             	<param name="inputName">dwInputStream</param>
             	<param name="contentDisposition">attachment;filename="${fileFileName}"</param>

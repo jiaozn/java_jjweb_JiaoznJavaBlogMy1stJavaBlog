@@ -146,4 +146,5 @@ public class StudentDAO extends HibernateDaoSupport {
 	public static StudentDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (StudentDAO) ctx.getBean("StudentDAO");
 	}
+
 }
