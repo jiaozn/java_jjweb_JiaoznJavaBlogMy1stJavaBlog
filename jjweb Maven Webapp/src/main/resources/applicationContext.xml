@@ -51,4 +51,18 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="CounterSessionDAO"
+		class="com.jjweb.model.CounterSessionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- 
+	<bean id="SessionCounterListener"
+		class="com.jjweb.util.SessionCounterListener">
+		<property name="counterSessionDAO">
+			<ref bean="CounterSessionDAO" />
+		</property>
+	</bean>
+	 -->
 	</beans>

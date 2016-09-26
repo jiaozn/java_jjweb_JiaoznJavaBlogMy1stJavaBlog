@@ -17,11 +17,28 @@
 		<param-value>classpath*:applicationContext*.xml</param-value>
 	</context-param>
 	   
+	
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
-	  
+	 
+	  <listener>
+		<listener-class>com.jjweb.util.SessionCounterListener</listener-class>
+	</listener>
+	<!--
+	 -->
+	<filter>   
+  		<filter-name>SetvIpFilter</filter-name>   
+ 		<filter-class>com.jjweb.util.SetvIpFilter</filter-class>   
+   	</filter>  
+  	<filter-mapping>   
+   		<filter-name>SetvIpFilter</filter-name>  
+ 		<url-pattern>/*</url-pattern>  
+ 	</filter-mapping>
+	
+	
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -51,4 +68,9 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	 
+	
+	
+	
+	
+	
 </web-app>
