@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Student entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "student", catalog = "test")
+@Table(name = "student", catalog = "jjweb")
 public class Student extends AbstractStudent implements java.io.Serializable {
 
 	// Constructors

@@ -8,7 +8,7 @@ import javax.persistence.Table;
  * Introduction entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "introduction", catalog = "test")
+@Table(name = "introduction", catalog = "jjweb")
 public class Introduction extends AbstractIntroduction implements
 		java.io.Serializable {
 

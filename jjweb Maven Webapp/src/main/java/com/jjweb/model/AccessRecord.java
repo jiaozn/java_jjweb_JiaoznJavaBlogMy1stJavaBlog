@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "accessRecord", catalog = "test")
+@Table(name = "accessRecord", catalog = "jjweb")
 public class AccessRecord {
 	private int id;
 	private String ip;

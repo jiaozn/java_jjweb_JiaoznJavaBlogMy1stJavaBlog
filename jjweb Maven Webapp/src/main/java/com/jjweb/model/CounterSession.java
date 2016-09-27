@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "counterSession", catalog = "test")
+@Table(name = "counterSession", catalog = "jjweb")
 public class CounterSession {
 	private int id;
 	private String ip;

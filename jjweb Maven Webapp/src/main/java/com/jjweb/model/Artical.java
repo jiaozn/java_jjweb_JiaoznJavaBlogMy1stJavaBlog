@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 import com.jjweb.model.Category;
 @Entity
-@Table(name = "artical", catalog = "test")
+@Table(name = "artical", catalog = "jjweb")
 public class Artical {
 	private int id;
 	private String title;
