@@ -21,5 +21,10 @@ public class IntroductionServiceImpl implements IntroductionService{
 		// TODO Auto-generated method stub
 		return introductionDAO.merge(introduction);
 	}
+	@Override
+	public void save(Introduction introduction) {
+		// TODO Auto-generated method stub
+		introductionDAO.save(introduction);
+	}
 
 }

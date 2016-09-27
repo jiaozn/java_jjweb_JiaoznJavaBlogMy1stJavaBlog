@@ -148,7 +148,9 @@
 						<ul class="dropdown-menu">
 							<li><a href="user_showAll">用戶清單</a>
 							</li>
-							<li><a href="counterSession_showAll">访问统计</a>
+							<li><a href="counterSession_showAll">网站访问统计</a>
+							</li>
+							<li><a href="accessRecord_showAll">文章访问统计</a>
 							</li>
 						</ul></li>
 						<%} %>

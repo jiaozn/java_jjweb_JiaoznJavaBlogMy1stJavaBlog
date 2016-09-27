@@ -3,11 +3,11 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-   <base href="<%=basePath%>">
+    <base href="<%=basePath%>">
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -22,14 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
-   <p>
-
-   <h3>Hello,World!<br>
-   <s:property value="introduction.content" escape="false"/></h3><br>
-   <h4>Yours,Jiao<br></h4>
-  <s:property value="introduction.time"/><br>
-  人气：<s:property value="sessionRecord"/>
-  <%! int au; %>
+   
+   	 <%! int au; %>
 <%
 			User userx= (User)session.getAttribute("userx") ;
 	if (userx==null)
@@ -38,11 +32,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	au=userx.getAuthority();
 			//游客0，登陆3，管理7
 				%>
-  <%if(au==7){ %>
-   <a href="introduction_edit" >修改</a>
-   <%} %>
-   <jsp:include page="main_foot.jsp"></jsp:include>
-   <s:debug></s:debug>
    
+study_c_listAll.jsp<br>
+<h2>所有的文章访问记录：</h2>
+<hr>
+<table class="table">
+<tr><td>记录id</td>
+		<td>用户Ip</td>
+		<td>目的地址</td>
+		<td>说明</td>
+		<td>时间</td>
+		
+	<s:iterator value="listAccessRecord" var="art">
+		
+		<tr><td><s:property value="#art.id"/></td>
+		<td><s:property value="#art.ip"/></td>
+		<td><s:property value="#art.destination"/></td>
+		<td><s:property value="#art.aintroduction"/></td>
+		<td><s:property value="#art.time"/></td>
+		</tr>
+	</s:iterator>
+	</table>
+	
+
+	
+	
+	
+	<s:debug></s:debug>
+   <jsp:include page="main_foot.jsp"></jsp:include>
+  
   </body>
 </html>

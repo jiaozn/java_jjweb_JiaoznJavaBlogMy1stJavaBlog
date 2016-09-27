@@ -9,11 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "counterSession", catalog = "test")
-public class CounterSession {
+@Table(name = "accessRecord", catalog = "test")
+public class AccessRecord {
 	private int id;
 	private String ip;
 	private String destination;
+	private String aintroduction;
 	private Timestamp time;
 	@Id
 	@GeneratedValue
@@ -21,7 +22,6 @@ public class CounterSession {
 	public int getId() {
 		return id;
 	}
-	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -32,22 +32,18 @@ public class CounterSession {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
+	@Column(name = "destination", nullable = false, length = 255)
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
 	@Column(name = "time", nullable = false, length = 255)
 	public Timestamp getTime() {
 		return time;
 	}
-
 	public void setTime(Timestamp time) {
 		this.time = time;
 	}
-	@Column(name = "destination", nullable = true, length = 255)
-	public String getDestination() {
-		return destination;
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-	
-
 }

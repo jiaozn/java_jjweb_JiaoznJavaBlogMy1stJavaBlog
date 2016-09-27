@@ -17,6 +17,7 @@ public abstract class AbstractIntroduction implements java.io.Serializable {
 
 	private Integer id;
 	private String content;
+	private String access;
 	private Timestamp time;
 
 	// Constructors
@@ -59,6 +60,14 @@ public abstract class AbstractIntroduction implements java.io.Serializable {
 
 	public void setTime(Timestamp time) {
 		this.time = time;
+	}
+	@Column(name = "access", nullable = true, length = 19)
+	public String getAccess() {
+		return access;
+	}
+
+	public void setAccess(String access) {
+		this.access = access;
 	}
 
 }

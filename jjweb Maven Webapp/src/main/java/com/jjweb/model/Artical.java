@@ -19,6 +19,7 @@ public class Artical {
 	private String content;
 	private String author;
 	private Timestamp time;
+	private String access;
 	private Category category;
 	@Id
 	@GeneratedValue
@@ -64,5 +65,12 @@ public class Artical {
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	@Column(name = "access", nullable = true, length = 19)
+	public String getAccess() {
+		return access;
+	}
+	public void setAccess(String access) {
+		this.access = access;
 	}
 }

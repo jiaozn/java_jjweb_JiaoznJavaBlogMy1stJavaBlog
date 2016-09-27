@@ -57,6 +57,12 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="AccessRecordDAO"
+		class="com.jjweb.model.AccessRecordDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 	<!-- 
 	<bean id="SessionCounterListener"
 		class="com.jjweb.util.SessionCounterListener">

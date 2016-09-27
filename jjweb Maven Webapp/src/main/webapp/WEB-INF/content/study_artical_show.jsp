@@ -19,7 +19,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	<title>Hello,world</title>
   </head>
-  
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
@@ -29,6 +28,7 @@ study_c_showArtical.jsp
 日期：<s:property value="artical.time"></s:property><br>
 <hr>
 正文：<s:property value="artical.content" escape="false"></s:property><br>
+阅读次数：<s:property value="artical.access"/>
   <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
 

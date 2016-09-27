@@ -45,6 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    <div class="form-group">
 <label>分类：</label>
+<s:select list="categories" listValue="name" listKey="id" name="category.id" value="${artical.category.id }"></s:select> 
 <input type="text" name="category_id" class="form-control" value="${artical.category.id }"/>
    </div>
    <input type="submit" class="btn btn-default"/> 

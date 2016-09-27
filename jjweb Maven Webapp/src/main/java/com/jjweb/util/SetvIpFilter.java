@@ -29,6 +29,10 @@ public class SetvIpFilter implements Filter{
 		System.out.println("1-----doFilter get user Ip1"+vIp);
 		request.getServletContext().setAttribute("vIp", vIp);
 		System.out.println("2insert into session--->chain.doFilter");
+		
+		
+		
+		
 		chain.doFilter(request, response);
 	}
 
