@@ -18,6 +18,7 @@
 		<property name="maxIdle">30</property>
 		<property name="maxWait">500</property>
 		<property name="defaultAutoCommit">false</property>
+		<property name="connection.autocommit">true</property> 
 		  <property name="hbm2ddl.auto">update</property>
 		<!-- <mapping class="com.jjweb.model.Student" />
 		<mapping class="com.jjweb.model.Introduction" />
