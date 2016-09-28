@@ -2,14 +2,22 @@ package com.jjweb.action;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.jjweb.model.Comments;
+import com.jjweb.model.CommentsDTO;
 import com.jjweb.model.CounterSessionDAO;
 import com.jjweb.model.Introduction;
+import com.jjweb.service.ArticalService;
+import com.jjweb.service.CommentsService;
 import com.jjweb.service.IntroductionService;
+import com.jjweb.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class IntroductionAction extends ActionSupport{
@@ -22,6 +30,15 @@ public class IntroductionAction extends ActionSupport{
 	private CounterSessionDAO counterSessionDAO;
 	private int sessionRecord;
 	
+	@Resource
+	private CommentsService commentsService;
+	private List<Comments> listComments;
+	private List<CommentsDTO> listCommentsDTO;
+	@Resource
+	private ArticalService articalService;
+	@Resource
+	private UserService userService;
+	
 	@Action(value="introduction_show",results={
 			@Result(name="success",location = "/WEB-INF/content/service_introduction_show.jsp")})
 	public String execute(){
@@ -29,8 +46,27 @@ public class IntroductionAction extends ActionSupport{
 		int access=Integer.parseInt(introduction.getAccess()==null?"0":introduction.getAccess());
 		introduction.setAccess(String.valueOf(++access));
 		introductionService.merge(introduction);
-		
 		sessionRecord=counterSessionDAO.findAll().size()==0?1:counterSessionDAO.findAll().size();
+		
+		
+		listComments=new ArrayList<Comments>();
+		listComments=commentsService.findAll();
+		listCommentsDTO=new ArrayList<CommentsDTO>();
+//		Comments commentsTemp=new Comments();
+//		CommentsDTO commentsDTOTemp=new CommentsDTO();
+		for(int i=0;i<listComments.size();i++){
+			Comments commentsTemp=new Comments();
+			CommentsDTO commentsDTOTemp=new CommentsDTO();
+			commentsTemp=listComments.get(i);
+			commentsDTOTemp.setId(commentsTemp.getId());
+			commentsDTOTemp.setArtical(articalService.findById(commentsTemp.getArticalid()));
+			commentsDTOTemp.setContent(commentsTemp.getContent());
+			commentsDTOTemp.setTime(commentsTemp.getTime());
+			commentsDTOTemp.setUser(userService.findById(commentsTemp.getUserid()));
+			listCommentsDTO.add(commentsDTOTemp);
+		}
+		
+		
 		return SUCCESS;
 	}
 	@Action(value="introduction_edit",results={
@@ -73,5 +109,35 @@ public class IntroductionAction extends ActionSupport{
 	}
 	public void setSessionRecord(int sessionRecord) {
 		this.sessionRecord = sessionRecord;
+	}
+	public CommentsService getCommentsService() {
+		return commentsService;
+	}
+	public void setCommentsService(CommentsService commentsService) {
+		this.commentsService = commentsService;
+	}
+	public List<Comments> getListComments() {
+		return listComments;
+	}
+	public void setListComments(List<Comments> listComments) {
+		this.listComments = listComments;
+	}
+	public List<CommentsDTO> getListCommentsDTO() {
+		return listCommentsDTO;
+	}
+	public void setListCommentsDTO(List<CommentsDTO> listCommentsDTO) {
+		this.listCommentsDTO = listCommentsDTO;
+	}
+	public ArticalService getArticalService() {
+		return articalService;
+	}
+	public void setArticalService(ArticalService articalService) {
+		this.articalService = articalService;
+	}
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 }

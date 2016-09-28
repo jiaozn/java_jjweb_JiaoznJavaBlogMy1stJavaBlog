@@ -1,9 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.jjweb.model.User" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -26,30 +26,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="main_head.jsp"></jsp:include>
    
 <h6>study_c .jsp</h6>   
-<form action="artical_editCommit" name="articalForm" method="post" role="form" >
+
+
+<%! int au; %>
+<%
+			User userx= (User)session.getAttribute("userx") ;
+	if (userx==null){
+			userx=new User();
+			userx.setAuthority(0);
+			userx.setId(0);
+			userx.setName("游客");
+			au=0;
+			}
+	else{
+	au=userx.getAuthority();}
+			//游客0，登陆3，管理7
+				%>
+
+
+
+
+
+
+<form action="comments_editCommit" name="articalForm" method="post" role="form" >
 <div class="form-group">
-   <label>标题：</label><input type="text" name="artical.title" class="form-control" value="${artical.title }"/>
-   </div>
-   <div class="form-group">
-   <label>正文：</label>
-   <textarea id="editor1" name="artical.content" class="form-control" rows="3" >${artical.content }</textarea>
+评论id：<input type="text" name="comments.id" value="${commentsDTO.id }"/>
+<div class="form-group">
+   <label>评论内容</label>
+   <textarea id="editor1" name="comments.content" class="form-control" rows="3" >${commentsDTO.content }</textarea>
    <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
                 CKEDITOR.replace( 'editor1' );
             </script>
    </div>
-   <div class="form-group">
-   <label>作者：</label>
-   <input type="text" name="artical.author" class="form-control" value="${artical.author }"/>
-   </div>
-   <div class="form-group">
-<label>分类：</label>
-<s:select list="categories" listValue="name" listKey="id" name="category.id" value="${artical.category.id }"></s:select> 
-<input type="text" name="category_id" class="form-control" value="${artical.category.id }"/>
-   </div>
-   <input type="submit" class="btn btn-default"/> 
+   评论人：<input type="text" value="${commentsDTO.user.id }" name="comments.userid"/> and Name <input type="text" value="${commentsDTO.user.name}" /><br>
+评论时间：<input type="text" value="${commentsDTO.time }" name="comments.time"/><br>
+评论对象：<input type="text" value="${commentsDTO.artical.title }" name="comments.articalid"/><br>
+  <input type="submit" class="btn btn-default"/> 
+
    </form>
+   <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   </body>
 </html>

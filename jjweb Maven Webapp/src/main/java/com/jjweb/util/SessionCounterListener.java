@@ -31,9 +31,9 @@ public class SessionCounterListener implements HttpSessionListener{
 		// TODO Auto-generated method stub
 		 HttpSession session=event.getSession(); 
 		counterSessionDAO=(CounterSessionDAO) this.getObjectFromApplication(session.getServletContext(), "CounterSessionDAO");  
-		System.out.println("3---sessionCreated=====>getSession.getAttribute");
+		//System.out.println("3---sessionCreated=====>getSession.getAttribute");
 		String vIp=(String) event.getSession().getServletContext().getAttribute("vIp");//getAttribute("vIp");
-		System.out.println("4---finish"+vIp);
+		//System.out.println("4---finish"+vIp);
 		counterSession=new CounterSession();
 		counterSession.setIp(vIp);
 		counterSession.setTime(new Timestamp(new Date().getTime()));

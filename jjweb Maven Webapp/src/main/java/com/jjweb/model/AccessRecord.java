@@ -46,4 +46,11 @@ public class AccessRecord {
 	public void setTime(Timestamp time) {
 		this.time = time;
 	}
+	@Column(name = "aintroduction", nullable = true, length = 255)
+	public String getAintroduction() {
+		return aintroduction;
+	}
+	public void setAintroduction(String aintroduction) {
+		this.aintroduction = aintroduction;
+	}
 }

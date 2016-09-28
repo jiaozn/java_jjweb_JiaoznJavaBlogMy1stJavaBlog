@@ -63,6 +63,12 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="CommentsDAO"
+		class="com.jjweb.model.CommentsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 	<!-- 
 	<bean id="SessionCounterListener"
 		class="com.jjweb.util.SessionCounterListener">

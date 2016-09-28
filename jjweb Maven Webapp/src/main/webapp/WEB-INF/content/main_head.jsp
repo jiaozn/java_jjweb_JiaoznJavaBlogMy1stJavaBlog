@@ -31,13 +31,19 @@
 <%! int au; %>
 <%
 			User userx= (User)session.getAttribute("userx") ;
-	if (userx==null)
+	if (userx==null){
+			userx=new User();
+			userx.setAuthority(0);
+			userx.setId(0);
+			userx.setName("游客");
 			au=0;
-	else
-	au=userx.getAuthority();
+			}
+	else{
+	au=userx.getAuthority();}
 			//游客0，登陆3，管理7
 				%>
-				 
+
+
 				 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -151,6 +157,8 @@
 							<li><a href="counterSession_showAll">网站访问统计</a>
 							</li>
 							<li><a href="accessRecord_showAll">文章访问统计</a>
+							</li>
+							<li><a href="comments_showAll">管理所有评论</a>
 							</li>
 						</ul></li>
 						<%} %>

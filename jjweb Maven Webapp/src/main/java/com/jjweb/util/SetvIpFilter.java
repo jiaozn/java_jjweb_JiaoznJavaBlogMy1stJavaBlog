@@ -26,9 +26,9 @@ public class SetvIpFilter implements Filter{
 		//String vIp=req.getRemoteAddr();
 		//req.getServletContext().setAttribute("vIp", vIp);
 		String vIp=request.getRemoteAddr();
-		System.out.println("1-----doFilter get user Ip1"+vIp);
+		//System.out.println("1-----doFilter get user Ip1"+vIp);
 		request.getServletContext().setAttribute("vIp", vIp);
-		System.out.println("2insert into session--->chain.doFilter");
+		//System.out.println("2insert into session--->chain.doFilter");
 		
 		
 		

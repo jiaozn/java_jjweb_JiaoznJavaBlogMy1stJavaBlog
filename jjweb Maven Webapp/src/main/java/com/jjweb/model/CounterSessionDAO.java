@@ -29,7 +29,7 @@ public class CounterSessionDAO extends HibernateDaoSupport{
 	
 	public void save(CounterSession transientInstance) {
 		log.debug("saving CounterSession instance");
-		System.out.println("counterSessionDAO-----"+transientInstance.getIp());
+	//	System.out.println("counterSessionDAO-----"+transientInstance.getIp());
 		if(transientInstance!=null)
 		try {
 			getHibernateTemplate().save(transientInstance);
