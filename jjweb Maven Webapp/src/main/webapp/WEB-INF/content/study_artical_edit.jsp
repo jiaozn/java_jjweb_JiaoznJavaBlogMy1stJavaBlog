@@ -28,12 +28,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <h6>study_c .jsp</h6>   
 <form action="artical_editCommit" name="articalForm" method="post" role="form" >
 <div class="form-group">
-<input type="hidden" value="<s:property value='artical.id'/>"/>
-   <label>标题：</label><input type="text" name="artical.title" class="form-control" value="${artical.title }"/>
+<input type="hidden" value="<s:property value="artical.id"/>" name="artical.id"/>
+<input type="hidden" value="<s:property value="artical.access"/>" name="artical.access"/>
+   <label>标题：</label><input type="text" name="artical.title" class="form-control" value="<s:property value="artical.title"/>" />
    </div>
    <div class="form-group">
    <label>正文：</label>
-   <textarea id="editor1" name="artical.content" class="form-control" rows="3" >${artical.content }</textarea>
+   <textarea id="editor1" name="artical.content" class="form-control" rows="3" ><s:property value="artical.content"/></textarea>
    <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
@@ -42,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    <div class="form-group">
    <label>作者：</label>
-   <input type="text" name="artical.author" class="form-control" value="${artical.author }"/>
+   <input type="text" name="artical.author" class="form-control" value="<s:property value="artical.author"/>"/>
    </div>
    <div class="form-group">
 <label>分类：</label>
@@ -58,5 +59,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <input type="submit" class="btn btn-default"/> 
    </form>
    <jsp:include page="main_foot.jsp"></jsp:include>
+   <s:debug></s:debug>
   </body>
 </html>
