@@ -42,13 +42,10 @@ public class CommentsAction extends ActionSupport implements
 
 	private Comments comments;
 	private CommentsDTO commentsDTO;
-	//private CommentsDTO commentsDTOTemp;
 	@Action(value = "comments_showAll", results = { 
 			@Result(name = "success", location = "/WEB-INF/content/service_comments_showAll.jsp") })
 	public String execute() {
-		//listComments = new ArrayList<Comments>();
 		listComments = commentsService.findAll();
-	//	listCommentsDTO = new ArrayList<CommentsDTO>();
 		
 		
 		for (int i = 0; i < listComments.size(); i++) {
@@ -66,7 +63,6 @@ public class CommentsAction extends ActionSupport implements
 				commentsDTOTemp.setArtical(articalTemp);
 			}
 
-			// commentsDTOTemp.setArtical(articalService.findById(commentsTemp.getArticalid()));
 			commentsDTOTemp.setContent(commentsTemp.getContent());
 			commentsDTOTemp.setTime(commentsTemp.getTime());
 			commentsDTOTemp.setUser(userService.findById(commentsTemp
@@ -77,46 +73,13 @@ public class CommentsAction extends ActionSupport implements
 		return SUCCESS;
 	}
 
-	// @Action(value="comments_show",results={
-	// @Result(name="success",location =
-	// "/WEB-INF/content/study_artical_show.jsp")})
-	// public String artical_show(){
-	// System.out.println("artical_show action.if request exists:"+request.toString());
-	//
-	// artical=articalService.findById(artical.getId());
-	// int
-	// access=Integer.parseInt(artical.getAccess()==null?"0":artical.getAccess());
-	// artical.setAccess(String.valueOf(++access));
-	// articalService.merge(artical);
-	//
-	// String ip=request.getRemoteAddr()==null?"解析失败":request.getRemoteAddr();
-	// //request.getRequestURI()
-	// String
-	// destination=request.getRequestURI()==null?"解析失败":request.getRequestURI();
-	// String aintroduction=artical.getId()+" -- "+artical.getTitle();
-	//
-	// accessRecord=new AccessRecord();
-	// accessRecord.setIp(ip);
-	// accessRecord.setDestination(destination);
-	// accessRecord.setTime(new Timestamp(new Date().getTime()));
-	// accessRecordDAO.save(accessRecord);
-	//
-	// return SUCCESS;
-	// }
-	// @Action(value="comments_add",results={
-	// @Result(name="input",location =
-	// "/WEB-INF/content/service_comments_add.jsp")})
-	// public String comments_add(){
-	// categories=categoryService.findAll();
-	// return INPUT;
-	// }
+
 	@Action(value = "comments_addCommit", results = { 
 			@Result(name = "input", location = "/WEB-INF/content/service_comments_addCommit.jsp") })
 	public String comments_addCommit() {
 		comments.setTime(new Timestamp(new Date().getTime()));
 		comments.setArticalid(comments.getArticalid());
 		commentsService.save(comments);
-		//listComments = new ArrayList<Comments>();
 		listComments = commentsService.findAll();
 		
 		
@@ -146,16 +109,16 @@ public class CommentsAction extends ActionSupport implements
 				commentsDTOTemp.setUser(userTemp);
 			}
 			listCommentsDTO.add(commentsDTOTemp);
-			System.out.println("-----22listCommentsDTO加一个temp"
-					+ commentsDTOTemp.getContent());//--------------------
+//			System.out.println("-----22listCommentsDTO加一个temp"
+//					+ commentsDTOTemp.getContent());//--------------------
 		
 		}
 
 		// test for 2
-		for (int jiaozn = 0; jiaozn < listCommentsDTO.size(); jiaozn++) {
-			System.out.println("-----最終listCommentsDTO" + jiaozn
-					+ listCommentsDTO.get(jiaozn).getContent());// --------------------------------
-		}
+//		for (int jiaozn = 0; jiaozn < listCommentsDTO.size(); jiaozn++) {
+//			System.out.println("-----最終listCommentsDTO" + jiaozn
+//					+ listCommentsDTO.get(jiaozn).getContent());// --------------------------------
+//		}
 		 //test for 2
 		
 		return INPUT;
@@ -231,8 +194,39 @@ public class CommentsAction extends ActionSupport implements
 	@Action(value = "comments_editCommit", results = {
 			@Result(name = "input", location = "/WEB-INF/content/service_comments_editCommit.jsp") })
 	public String comments_editCommit() {
+		
+		
+		
 		comments.setTime(new Timestamp(new Date().getTime()));
+		System.out.println("commentsid=------"+comments.getId());
 		commentsService.merge(comments);
+		
+		
+		
+		listComments = commentsService.findAll();
+			for (int i = 0; i < listComments.size(); i++) {
+				Comments commentsTemp = new Comments();
+				CommentsDTO commentsDTOTemp = new CommentsDTO();
+				commentsTemp = listComments.get(i);
+				commentsDTOTemp.setId(commentsTemp.getId());
+				if (commentsTemp.getArticalid() != 0) {
+					commentsDTOTemp.setArtical(articalService.findById(commentsTemp
+							.getArticalid()));
+				} else {
+					articalTemp = new Artical();
+					articalTemp.setId(0);
+					articalTemp.setTitle("主页君");
+					commentsDTOTemp.setArtical(articalTemp);
+				}
+
+				// commentsDTOTemp.setArtical(articalService.findById(commentsTemp.getArticalid()));
+				commentsDTOTemp.setContent(commentsTemp.getContent());
+				commentsDTOTemp.setTime(commentsTemp.getTime());
+				commentsDTOTemp.setUser(userService.findById(commentsTemp
+						.getUserid()));
+				listCommentsDTO.add(commentsDTOTemp);
+			}
+		
 		return INPUT;
 	}
 

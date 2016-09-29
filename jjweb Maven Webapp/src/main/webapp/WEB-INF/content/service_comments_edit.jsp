@@ -50,19 +50,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <form action="comments_editCommit" name="articalForm" method="post" role="form" >
 <div class="form-group">
-评论id：<input type="text" name="comments.id" value="${commentsDTO.id }"/>
+评论id：<input type="text" name="comments.id" value="${commentsDTO.id}"/>
 <div class="form-group">
    <label>评论内容</label>
-   <textarea id="editor1" name="comments.content" class="form-control" rows="3" >${commentsDTO.content }</textarea>
+   <textarea id="editor1" name="comments.content" class="form-control" rows="3" >${commentsDTO.content}</textarea>
    <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
                 CKEDITOR.replace( 'editor1' );
             </script>
    </div>
-   评论人：<input type="text" value="${commentsDTO.user.id }" name="comments.userid"/> and Name <input type="text" value="${commentsDTO.user.name}" /><br>
-评论时间：<input type="text" value="${commentsDTO.time }" name="comments.time"/><br>
-评论对象：<input type="text" value="${commentsDTO.artical.title }" name="comments.articalid"/><br>
+   评论人：<input type="text" value="${commentsDTO.user.id}" name="comments.userid"/> and Name <input type="text" value="${commentsDTO.user.name}" /><br>
+评论时间：<input type="text" value="${commentsDTO.time}" name="comments.time"/><br>
+评论对象：<input type="text" value="${commentsDTO.artical.title}" name="comments.articalid"/><br>
   <input type="submit" class="btn btn-default"/> 
 
    </form>
