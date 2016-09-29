@@ -42,6 +42,7 @@ study_c_listAll.jsp<br>
 		<td>题目 </td>
 		<td>日期</td>
 		<td>分类</td>
+		<td>阅览量</td>
 		<td>操作</td></tr>
 		
 	<s:iterator value="listArtical" var="art">
@@ -51,6 +52,7 @@ study_c_listAll.jsp<br>
 		<td><s:property value="#art.title"/></td>
 		<td><s:property value="#art.time"/></td>
 		<td><s:property value="#art.category.name"/></td>
+		<td><s:property value="#art.access"/></td>
 		<td><a href="artical_show?artical.id=<s:property value="#art.id"/>">查看   </a>
 		<%if(au==7){ %>
 		<a href="artical_edit?artical.id=<s:property value="#art.id"/>">修改   </a>

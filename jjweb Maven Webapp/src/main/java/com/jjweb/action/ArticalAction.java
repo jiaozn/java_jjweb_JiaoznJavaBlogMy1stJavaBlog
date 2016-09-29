@@ -65,7 +65,7 @@ public class ArticalAction extends ActionSupport implements ServletRequestAware 
 	@Action(value="artical_show",results={
 			@Result(name="success",location = "/WEB-INF/content/study_artical_show.jsp")})
 	public String artical_show(){
-		System.out.println("artical_show action.if request exists:"+request.toString());
+		//System.out.println("artical_show action.if request exists:"+request.toString());
 		
 		artical=articalService.findById(artical.getId());
 		int access=Integer.parseInt(artical.getAccess()==null?"0":artical.getAccess());
@@ -80,6 +80,7 @@ public class ArticalAction extends ActionSupport implements ServletRequestAware 
 		accessRecord=new AccessRecord();
 		accessRecord.setIp(ip);
 		accessRecord.setDestination(destination);
+		accessRecord.setAintroduction(aintroduction);
 		accessRecord.setTime(new Timestamp(new Date().getTime()));
 		accessRecordDAO.save(accessRecord);
 		
