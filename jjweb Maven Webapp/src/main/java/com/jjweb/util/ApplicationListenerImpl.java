@@ -57,7 +57,7 @@ public class ApplicationListenerImpl implements ApplicationListener {
 		Introduction introduction=new Introduction();
 		introduction.setId(1);
 		introduction.setAccess("0");
-		introduction.setContent("<p>Hello,world!</p>" +
+		introduction.setContent(
 				"<p>This is a JWeb application!</p>" +
 				"<p>Init Introduction by Jiaozn.</p>");
 		introduction.setTime(new Timestamp(new Date().getTime()));

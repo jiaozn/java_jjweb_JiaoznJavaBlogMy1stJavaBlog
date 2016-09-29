@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.jjweb.model.Category" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -44,7 +44,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    <div class="form-group">
 <label>分类：</label>
- 
+<% //request.setAttribute("categories", "(List<Category>)(request.getAttribute('categories').remove(0))"); 
+((List<Category>)request.getAttribute("categories")).remove(0);
+%>
 <s:select list="categories" listValue="name" listKey="id" name="category.id"></s:select> 
    </div>
    <input type="submit" class="btn btn-default"/> 

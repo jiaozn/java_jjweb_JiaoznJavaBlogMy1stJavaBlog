@@ -1,9 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.jjweb.model.Category,com.jjweb.model.Artical" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <h6>study_c .jsp</h6>   
 <form action="artical_editCommit" name="articalForm" method="post" role="form" >
 <div class="form-group">
+<input type="hidden" value="<s:property value='artical.id'/>"/>
    <label>标题：</label><input type="text" name="artical.title" class="form-control" value="${artical.title }"/>
    </div>
    <div class="form-group">
@@ -45,8 +46,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    <div class="form-group">
 <label>分类：</label>
-<s:select list="categories" listValue="name" listKey="id" name="category.id" value="${artical.category.id }"></s:select> 
-<input type="text" name="category_id" class="form-control" value="${artical.category.id }"/>
+<% //request.setAttribute("categories", "(List<Category>)(request.getAttribute('categories').remove(0))"); 
+((List<Category>)request.getAttribute("categories")).remove(0);
+//int catid=((Artical)request.getAttribute("artical")).getCategory().getId()-1;
+//System.out.println(catid);
+%>
+
+<s:select list="categories" listValue="name" listKey="id" name="category.id" value="%{artical.category.id}"></s:select> 
+<s:property value="artical.category.id"/>
    </div>
    <input type="submit" class="btn btn-default"/> 
    </form>

@@ -95,6 +95,7 @@ public class ArticalAction extends ActionSupport implements ServletRequestAware 
 			@Result(name="input",location = "/WEB-INF/content/study_artical_addCommit.jsp")})
 	public String artical_addCommit(){
 		artical.setTime(new Timestamp(new Date().getTime()));
+		category=categoryService.findById(category.getId());
 		artical.setCategory(category);
 		articalService.save(artical);
 		return INPUT;
@@ -109,13 +110,14 @@ public class ArticalAction extends ActionSupport implements ServletRequestAware 
 	@Action(value="artical_edit",results={
 			@Result(name="success",location = "/WEB-INF/content/study_artical_edit.jsp")})
 	public String artical_edit(){
-		artical=articalService.findById(artical.getId());
+		artical=articalService.findById(artical.getId());	
 		categories=categoryService.findAll();
 		return SUCCESS;
 	}
 	@Action(value="artical_editCommit",results={
 			@Result(name="success",location = "/WEB-INF/content/study_artical_editCommit.jsp")})
 	public String artical_editCommit(){
+		artical.setId(artical.getId());
 		artical.setTime(new Timestamp(new Date().getTime()));
 		artical.setCategory(category);
 		articalService.merge(artical);
