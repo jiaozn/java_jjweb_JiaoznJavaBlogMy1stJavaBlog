@@ -41,10 +41,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 CKEDITOR.replace( 'editor1' );
             </script>
    </div>
+   
+   <%--
    <div class="form-group">
    <label>作者：</label>
    <input type="text" name="artical.author" class="form-control" value="<s:property value="artical.author"/>"/>
    </div>
+   --%>
+     <input type="hidden" name="artical.author" value="<s:property value="#session.userx.name"/>"/>
+   作者：<s:property value="#session.userx.name"/>
    <div class="form-group">
 <label>分类：</label>
 <% //request.setAttribute("categories", "(List<Category>)(request.getAttribute('categories').remove(0))"); 

@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<meta http-equiv="Refresh" content="3;url=artical_showAll">
+<meta http-equiv="Refresh" content="1;url=artical_showAll">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -30,7 +30,7 @@
 </style>
 
 <script language="javascript">
-	var times = 4;
+	var times = 2;
 	clock();
 	function clock() {
 		window.setTimeout('clock()', 1000);
@@ -47,7 +47,7 @@
 		<tr>
 			<td class="FontBlack STYLE1">该页面将在</td>
 			<td class="FontBlack">
-				<div class="STYLE1" id="time">3</div></td>
+				<div class="STYLE1" id="time">1</div></td>
 			<td class="FontBlack STYLE1">秒后自动跳转</td>
 		</tr>
 	</table>

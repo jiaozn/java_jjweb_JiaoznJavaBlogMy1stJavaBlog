@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//游客0，登陆3，管理7
 				%>
   <%if(au==7){ %>
-   <a href="introduction_edit" >修改</a>
+   <a href="introduction_edit" >【编辑】</a><br>
    <%} %>
    
     网站人气：<s:property value="sessionRecord"/><br>
@@ -100,6 +100,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
    <jsp:include page="main_foot.jsp"></jsp:include>
    <s:debug></s:debug>
-    <s:property value="#session.userx.id"/>
-  </body>
+    <%--<s:property value="#session.userx.id"/>
+  --%></body>
 </html>
