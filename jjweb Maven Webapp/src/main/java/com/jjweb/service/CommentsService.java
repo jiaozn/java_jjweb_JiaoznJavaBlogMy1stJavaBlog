@@ -10,4 +10,5 @@ public interface CommentsService {
 	public List findAll();
 	public Comments merge(Comments comments);
 	public Comments findById(java.lang.Integer id);
+	public List findByArticalId(int id);
 }

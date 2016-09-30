@@ -10,10 +10,12 @@ import javax.annotation.Resource;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.jjweb.model.Artical;
 import com.jjweb.model.Comments;
 import com.jjweb.model.CommentsDTO;
 import com.jjweb.model.CounterSessionDAO;
 import com.jjweb.model.Introduction;
+import com.jjweb.model.User;
 import com.jjweb.service.ArticalService;
 import com.jjweb.service.CommentsService;
 import com.jjweb.service.IntroductionService;
@@ -59,10 +61,31 @@ public class IntroductionAction extends ActionSupport{
 			CommentsDTO commentsDTOTemp=new CommentsDTO();
 			commentsTemp=listComments.get(i);
 			commentsDTOTemp.setId(commentsTemp.getId());
-			commentsDTOTemp.setArtical(articalService.findById(commentsTemp.getArticalid()));
+			
+			if (commentsTemp.getArticalid() != 0) {
+				commentsDTOTemp.setArtical(articalService.findById(commentsTemp
+						.getArticalid()));
+			} else {
+				Artical articalTemp = new Artical();
+				articalTemp.setId(0);
+				articalTemp.setTitle("Ö÷Ò³¾ý");
+				commentsDTOTemp.setArtical(articalTemp);
+			}
+			
+			//commentsDTOTemp.setArtical(articalService.findById(commentsTemp.getArticalid()));
 			commentsDTOTemp.setContent(commentsTemp.getContent());
 			commentsDTOTemp.setTime(commentsTemp.getTime());
-			commentsDTOTemp.setUser(userService.findById(commentsTemp.getUserid()));
+			
+			if (commentsTemp.getUserid() != 0) {
+				commentsDTOTemp.setUser(userService.findById(commentsTemp
+						.getUserid()));
+			} else {
+				User userTemp = new User();
+				userTemp.setId(0);
+				userTemp.setName("ÓÎ¿Í");
+				commentsDTOTemp.setUser(userTemp);
+			}
+			//commentsDTOTemp.setUser(userService.findById(commentsTemp.getUserid()));
 			listCommentsDTO.add(commentsDTOTemp);
 		}
 		

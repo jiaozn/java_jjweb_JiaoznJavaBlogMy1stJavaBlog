@@ -65,9 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </script>
    </div>
    <input type="hidden" name="comments.articalid" value="0"/>
- 
-  
    <input type="hidden" name="comments.userid" value="<s:property value="#session.userx.id"/>"/>
+     <input type="hidden" name="commentsFrom" value="introductionPage"/>
    <input type="submit" class="btn btn-default"/> 
    </form>
   
@@ -84,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<br>
 		<s:property value="#art.content" escape="false"/>
 		<br>
-		<s:property value="#art.time"/>		--------	<br><br><br><br><br><br>
+		<s:property value="#art.time"/>		--------	<br><br><br>
 		<%if(au==7){%>
 		<a href="comments_edit?commentsDTO.id=<s:property value="#art.id"/>">修改   </a>
 		<a href="comments_delete?commentsDTO.id=<s:property value="#art.id"/>">删除   </a>

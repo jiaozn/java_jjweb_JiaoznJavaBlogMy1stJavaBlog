@@ -45,4 +45,10 @@ public class CommentsServiceImpl implements CommentsService{
 		return commentsDAO.findById(id);
 	}
 
+	@Override
+	public List findByArticalId(int id) {
+		// TODO Auto-generated method stub
+		return commentsDAO.findByArticalId(id);
+	}
+
 }

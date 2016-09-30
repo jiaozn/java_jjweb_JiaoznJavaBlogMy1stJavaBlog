@@ -15,12 +15,17 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.util.ServletContextAware;
 
+import com.jjweb.model.AccessRecord;
+import com.jjweb.model.AccessRecordDAO;
 import com.jjweb.model.Artical;
 import com.jjweb.model.Comments;
 import com.jjweb.model.CommentsDTO;
+import com.jjweb.model.CounterSessionDAO;
+import com.jjweb.model.Introduction;
 import com.jjweb.model.User;
 import com.jjweb.service.ArticalService;
 import com.jjweb.service.CommentsService;
+import com.jjweb.service.IntroductionService;
 import com.jjweb.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -35,13 +40,31 @@ public class CommentsAction extends ActionSupport implements
 	@Resource
 	private UserService userService;
 	private Artical articalTemp;
-
+	private Artical artical;
 	private HttpServletRequest request;
 	private ServletContext servletContext;
 	private HttpServletResponse response;
 
 	private Comments comments;
 	private CommentsDTO commentsDTO;
+	
+	private String commentsFrom;
+	private AccessRecord accessRecord;
+    @Resource
+    private AccessRecordDAO accessRecordDAO;
+    
+private Introduction introduction;
+private User user;
+	
+	
+	@Resource
+	private IntroductionService introductionService;
+	@Resource
+	private CounterSessionDAO counterSessionDAO;
+	private int sessionRecord;
+//    private User userTemp;
+    
+	
 	@Action(value = "comments_showAll", results = { 
 			@Result(name = "success", location = "/WEB-INF/content/service_comments_showAll.jsp") })
 	public String execute() {
@@ -69,20 +92,24 @@ public class CommentsAction extends ActionSupport implements
 					.getUserid()));
 			listCommentsDTO.add(commentsDTOTemp);
 		}
-
+		
+		
 		return SUCCESS;
 	}
 
-
 	@Action(value = "comments_addCommit", results = { 
-			@Result(name = "input", location = "/WEB-INF/content/service_comments_addCommit.jsp") })
+			@Result(name = "introductionPage", location = "/WEB-INF/content/service_comments_addCommit.jsp") ,
+			@Result(name="articalPage",location="/WEB-INF/content/study_artical_show.jsp")})
 	public String comments_addCommit() {
 		comments.setTime(new Timestamp(new Date().getTime()));
 		comments.setArticalid(comments.getArticalid());
+		comments.setUserid(comments.getUserid());
 		commentsService.save(comments);
-		listComments = commentsService.findAll();
-		
-		
+		if(commentsFrom.equals("articalPage")){
+			listComments=commentsService.findByArticalId(comments.getArticalid());//仅对此文章的评论
+		}else{
+			listComments=commentsService.findAll();//所有评论
+		}
 		for (int i = 0; i < listComments.size(); i++) {
 			Comments commentsTemp = new Comments();
 			CommentsDTO commentsDTOTemp = new CommentsDTO();
@@ -109,19 +136,44 @@ public class CommentsAction extends ActionSupport implements
 				commentsDTOTemp.setUser(userTemp);
 			}
 			listCommentsDTO.add(commentsDTOTemp);
-//			System.out.println("-----22listCommentsDTO加一个temp"
-//					+ commentsDTOTemp.getContent());//--------------------
 		
 		}
 
-		// test for 2
-//		for (int jiaozn = 0; jiaozn < listCommentsDTO.size(); jiaozn++) {
-//			System.out.println("-----最終listCommentsDTO" + jiaozn
-//					+ listCommentsDTO.get(jiaozn).getContent());// --------------------------------
-//		}
-		 //test for 2
+		if (commentsFrom!=null)
+		{
+			if (commentsFrom.equals("articalPage"))
+			{
+				System.out.println("3.0.---能获取到artical.id"+artical.getId()+"comments.artical.id="+comments.getArticalid());
+				artical=articalService.findById(artical.getId());
+				System.out.println("3.能获取到artical"+artical.getAccess()); 
+				int access=Integer.parseInt((artical.getAccess()==null || artical.getAccess()=="")?"0":artical.getAccess());
+				artical.setAccess(String.valueOf(++access));
+				articalService.merge(artical);
+				
+				String ip=request.getRemoteAddr()==null?"解析失败":request.getRemoteAddr();
+				//request.getRequestURI()
+				String destination=request.getRequestURI()==null?"解析失败":request.getRequestURI();
+				String aintroduction=artical.getId()+" -- "+artical.getTitle();
+				
+				accessRecord=new AccessRecord();
+				accessRecord.setIp(ip);
+				accessRecord.setDestination(destination);
+				accessRecord.setAintroduction(aintroduction);
+				accessRecord.setTime(new Timestamp(new Date().getTime()));
+				accessRecordDAO.save(accessRecord);
+				return "articalPage";
+			}else{
+				introduction=introductionService.findById(1);
+				
+				int access=Integer.parseInt(introduction.getAccess()==null?"0":introduction.getAccess());
+				introduction.setAccess(String.valueOf(++access));
+				introductionService.merge(introduction);
+				sessionRecord=counterSessionDAO.findAll().size()==0?1:counterSessionDAO.findAll().size();
+				return "introductionPage";
+			}
+		}
+		return "error";
 		
-		return INPUT;
 	}
 
 	@Action(value = "comments_delete", results = { @Result(name = "success", location = "/WEB-INF/content/service_comments_showAll.jsp") })
@@ -195,13 +247,9 @@ public class CommentsAction extends ActionSupport implements
 			@Result(name = "input", location = "/WEB-INF/content/service_comments_editCommit.jsp") })
 	public String comments_editCommit() {
 		
-		
-		
 		comments.setTime(new Timestamp(new Date().getTime()));
 		System.out.println("commentsid=------"+comments.getId());
 		commentsService.merge(comments);
-		
-		
 		
 		listComments = commentsService.findAll();
 			for (int i = 0; i < listComments.size(); i++) {
@@ -324,4 +372,100 @@ public class CommentsAction extends ActionSupport implements
 	public void setArticalTemp(Artical articalTemp) {
 		this.articalTemp = articalTemp;
 	}
+
+
+	public Artical getArtical() {
+		return artical;
+	}
+
+
+	public void setArtical(Artical artical) {
+		this.artical = artical;
+	}
+
+
+	public String getCommentsFrom() {
+		return commentsFrom;
+	}
+
+
+	public void setCommentsFrom(String commentsFrom) {
+		this.commentsFrom = commentsFrom;
+	}
+
+
+	public AccessRecord getAccessRecord() {
+		return accessRecord;
+	}
+
+
+	public void setAccessRecord(AccessRecord accessRecord) {
+		this.accessRecord = accessRecord;
+	}
+
+
+	public AccessRecordDAO getAccessRecordDAO() {
+		return accessRecordDAO;
+	}
+
+
+	public void setAccessRecordDAO(AccessRecordDAO accessRecordDAO) {
+		this.accessRecordDAO = accessRecordDAO;
+	}
+
+	public Introduction getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(Introduction introduction) {
+		this.introduction = introduction;
+	}
+
+	public IntroductionService getIntroductionService() {
+		return introductionService;
+	}
+
+	public void setIntroductionService(IntroductionService introductionService) {
+		this.introductionService = introductionService;
+	}
+
+	public CounterSessionDAO getCounterSessionDAO() {
+		return counterSessionDAO;
+	}
+
+	public void setCounterSessionDAO(CounterSessionDAO counterSessionDAO) {
+		this.counterSessionDAO = counterSessionDAO;
+	}
+
+	public int getSessionRecord() {
+		return sessionRecord;
+	}
+
+	public void setSessionRecord(int sessionRecord) {
+		this.sessionRecord = sessionRecord;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+//	public User getUserTemp() {
+//		return userTemp;
+//	}
+//
+//	public void setUserTemp(User userTemp) {
+//		this.userTemp = userTemp;
+//	}
+
+//	public User getUserTemp() {
+//		return userTemp;
+//	}
+//
+//	public void setUserTemp(User userTemp) {
+//		this.userTemp = userTemp;
+//	}
 }

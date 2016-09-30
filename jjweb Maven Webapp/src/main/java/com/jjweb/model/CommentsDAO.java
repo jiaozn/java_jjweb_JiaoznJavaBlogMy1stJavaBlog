@@ -75,6 +75,17 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 				}
 			}
 			
+			public List findByArticalId(int id){
+				log.debug("finding Comments by articalId");
+				try {
+					//String queryString = "from Comments";
+					return getHibernateTemplate().find("from Comments c where c.articalid=?", id);
+				} catch (RuntimeException re) {
+					log.error("find failed", re);
+					throw re;
+				}
+			}
+			
 			public static CommentsDAO getFromApplicationContext(
 					ApplicationContext ctx) {
 				return (CommentsDAO) ctx.getBean("CommentsDAO");
