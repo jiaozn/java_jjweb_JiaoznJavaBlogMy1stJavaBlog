@@ -22,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-study_c_showArtical.jsp
 
  <%! int au; %>
 <%
@@ -39,12 +38,9 @@ study_c_showArtical.jsp
 	au=userx.getAuthority();}
 			//游客0，登陆3，管理7
 				%>
-  <%if(au==7){ %>
-   <a href="introduction_edit" >【编辑】</a><br>
-   <%} %>
    
 
-题目：<s:property value="artical.title"></s:property><br>
+<h3>题目：<s:property value="artical.title"></s:property><br></h3>
 作者：<s:property value="artical.author"></s:property><br>
 日期：<s:property value="artical.time"></s:property><br>
 <hr>
@@ -95,7 +91,6 @@ study_c_showArtical.jsp
 	</s:iterator>
 	</table>
 
-  <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
 
   </body>

@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-<h6>study_c .jsp</h6>   
 <form action="user_addCommit" name="userForm" method="post" role="form" >
 <div class="form-group">
    <label>用户名：</label><input type="text" name="user.name" class="form-control"/>
@@ -62,6 +61,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <input type="submit" class="btn btn-default"/> 
    </form>
    <jsp:include page="main_foot.jsp"></jsp:include>
-   <s:debug></s:debug>
   </body>
 </html>

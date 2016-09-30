@@ -25,7 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-<h6>study_c .jsp</h6>   
 
 
 <%! int au; %>
@@ -66,7 +65,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <input type="submit" class="btn btn-default"/> 
 
    </form>
-   <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   </body>
 </html>

@@ -33,13 +33,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//游客0，登陆3，管理7
 				%>
    
-study_error.jsp<br>
 出错了
 
 	
 	
 	
-	<s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   
   </body>

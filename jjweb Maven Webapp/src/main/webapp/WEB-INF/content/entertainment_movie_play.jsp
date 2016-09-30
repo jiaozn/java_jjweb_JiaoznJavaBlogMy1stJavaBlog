@@ -30,7 +30,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-study_c .jsp   
 
 <div align="center">
 <video id="my-video" class="video-js" controls preload="auto" width="auto" height="264"
@@ -42,7 +41,6 @@ study_c .jsp
     </p>
   </video>
 </div>
-<s:debug></s:debug>
 
   <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
 

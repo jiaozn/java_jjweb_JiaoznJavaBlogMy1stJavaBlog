@@ -33,7 +33,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//游客0，登陆3，管理7
 				%>
    
-study_c_listAll.jsp<br>
 <h2>评论列表：</h2>
 <hr>
 <table class="table">
@@ -60,7 +59,6 @@ study_c_listAll.jsp<br>
 	</s:iterator>
 	</table>
 	
-	<s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   
   </body>

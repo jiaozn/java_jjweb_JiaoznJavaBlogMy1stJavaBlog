@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-<h6>study_c .jsp</h6>   
 <form action="category_addCommit" name="categoryForm" method="post" role="form" >
 
 分类名称：<input type="text" name="category.name" class="form-control"/>

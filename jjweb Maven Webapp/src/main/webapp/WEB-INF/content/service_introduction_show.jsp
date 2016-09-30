@@ -98,7 +98,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
    
    <jsp:include page="main_foot.jsp"></jsp:include>
-   <s:debug></s:debug>
     <%--<s:property value="#session.userx.id"/>
   --%></body>
 </html>

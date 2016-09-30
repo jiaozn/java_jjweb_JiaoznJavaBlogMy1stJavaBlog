@@ -23,7 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-entertainment_picture_listAll.jsp<br>
 <h2>文件列表-路径：</h2>
 <h4><s:property value="savePath"/></h4>
 <hr>
@@ -40,7 +39,6 @@ entertainment_picture_listAll.jsp<br>
 		<a href="upload!delete?fileStr=<s:property value="#dto.file"/>">删除   </a></td></tr>
 	</s:iterator>
 	</table>
-	<s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   
   </body>

@@ -23,7 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-study_c_listAll.jsp<br>
 <h2>分类列表：</h2>
 <hr>
 <table class="table">
@@ -42,7 +41,6 @@ study_c_listAll.jsp<br>
 	</table>
 	<a href="category_add">新增</a>
 	
-	<s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   
   </body>

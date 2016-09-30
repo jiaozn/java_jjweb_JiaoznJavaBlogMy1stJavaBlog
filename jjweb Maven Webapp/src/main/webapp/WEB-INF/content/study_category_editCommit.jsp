@@ -52,7 +52,6 @@
 		</tr>
 	</table>
 
-	<s:debug></s:debug>
 	<jsp:include page="main_foot.jsp"></jsp:include>
 </body>
 </html>

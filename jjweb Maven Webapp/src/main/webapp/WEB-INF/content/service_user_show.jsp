@@ -25,7 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <jsp:include page="main_head.jsp"></jsp:include>
    
-<h6>study_c .jsp</h6> 
 用戶id:<s:property value="user.id"/><br>
    <label>用户名：</label><s:property value="user.name"/><br>
    <label>密码：</label><s:property value="user.password"/><br>
@@ -37,7 +36,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <label>正文：</label><s:property value="user.pintroduction"/><br>
    <label>权限：</label><s:property value="user.authority"/><br>
   <a href="user_showAll">返回列表</a>
-   <s:debug></s:debug>
    <jsp:include page="main_foot.jsp"></jsp:include>
   </body>
 </html>
