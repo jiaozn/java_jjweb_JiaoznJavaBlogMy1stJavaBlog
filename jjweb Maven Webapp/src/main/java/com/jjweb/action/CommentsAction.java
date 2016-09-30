@@ -143,9 +143,9 @@ private User user;
 		{
 			if (commentsFrom.equals("articalPage"))
 			{
-				System.out.println("3.0.---能获取到artical.id"+artical.getId()+"comments.artical.id="+comments.getArticalid());
+				//System.out.println("3.0.---能获取到artical.id"+artical.getId()+"comments.artical.id="+comments.getArticalid());
 				artical=articalService.findById(artical.getId());
-				System.out.println("3.能获取到artical"+artical.getAccess()); 
+//				System.out.println("3.能获取到artical"+artical.getAccess()); 
 				int access=Integer.parseInt((artical.getAccess()==null || artical.getAccess()=="")?"0":artical.getAccess());
 				artical.setAccess(String.valueOf(++access));
 				articalService.merge(artical);
