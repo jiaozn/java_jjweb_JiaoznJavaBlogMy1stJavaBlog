@@ -248,7 +248,7 @@ private User user;
 	public String comments_editCommit() {
 		
 		comments.setTime(new Timestamp(new Date().getTime()));
-		System.out.println("commentsid=------"+comments.getId());
+	//	System.out.println("commentsid=------"+comments.getId());
 		commentsService.merge(comments);
 		
 		listComments = commentsService.findAll();
