@@ -16,3 +16,6 @@ maven来了，ssh框架也换了个bug稍微少点的，尴尬....
 3项目引入后，还需要进入WEB-INF/lib，把里面的jar包全选，右键-buildpath-add to build path；
   
   还有注意：已知jdk8是不行的，jdk7没问题，jdk版本不能选jdk8及以上；tomcat6是不行的，tomcat7可以，tomcat不能选择6及以下。
+          数据库使用mysql，引擎innoDB，数据库用户名root，密码root（hibernate.cfg.xml中修改）。
+          程序启动时会自动建表并初始化一部分数据，需要在mysql中手动新建名为jjweb的数据库create database jjweb;
+          现在hibernate.cfg.xml的hbm2dll功能设为create，建议启动一次让程序自动建表后，修改为update，避免程序重启后数据库数据丢失。
