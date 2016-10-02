@@ -19,3 +19,4 @@ maven来了，ssh框架也换了个bug稍微少点的，尴尬....
           数据库使用mysql，引擎innoDB，数据库用户名root，密码root（hibernate.cfg.xml中修改）。
           程序启动时会自动建表并初始化一部分数据，需要在mysql中手动新建名为jjweb的数据库create database jjweb;
           现在hibernate.cfg.xml的hbm2dll功能设为create，建议启动一次让程序自动建表后，修改为update，避免程序重启后数据库数据丢失。
+          还有，系统默认的管理员用户名jiaozn,密码jiaozn,这个管理员有权限管理功能，在用户管理里面，选择用户，然后修改这个用户的权限数字就可以了。默认不登陆为游客，权限2,普通登录用户权限5,管理员权限7。只有管理员才大权在握，拥有网站的实际管理权限。
